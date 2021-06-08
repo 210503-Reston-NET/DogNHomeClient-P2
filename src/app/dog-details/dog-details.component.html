@@ -1,0 +1,14 @@
+<div *ngIf="dog">
+    <h1>{{dog.animal.name}}</h1>
+    <hr>
+    <img *ngFor="let photo of dog.animal.photos" src="{{photo.small}}" alt="">
+    <h3>Age: {{dog.animal.age}}</h3>
+    <hr>
+    <h3>Breed: {{dog.animal.breeds.primary}}, <span *ngIf="dog.animal.breeds.secondary">{{dog.animal.breeds.secondary}}</span></h3>
+    <hr>
+    <h3>Tags: </h3>
+    <p *ngFor="let tag of dog.animal.tags">{{tag}}</p>
+    <hr>
+    <h3>Description: {{dog.animal.description}}</h3>
+
+</div>

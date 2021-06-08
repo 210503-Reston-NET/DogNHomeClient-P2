@@ -1,0 +1,9 @@
+<ul *ngIf="dogs">
+    <li *ngFor="let dog of dogs.animals">
+        <p>Name: {{dog.name}}</p>
+
+        <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+        <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+    </li>
+</ul>
+<app-login></app-login>
