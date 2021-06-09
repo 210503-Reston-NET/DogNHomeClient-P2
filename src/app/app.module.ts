@@ -19,6 +19,8 @@ import { DogDetailsComponent } from './dog-details/dog-details.component';
 import { DogListComponent } from './dog-list/dog-list.component';
 import { SurveyComponent } from './survey/survey.component';
 import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
 ;
 
 @NgModule({
@@ -29,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     DogDetailsComponent,
     DogListComponent,
     SurveyComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
     
   ],
   imports: [
@@ -40,7 +43,8 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     AngularFireAuthModule,
     FlexLayoutModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase)
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

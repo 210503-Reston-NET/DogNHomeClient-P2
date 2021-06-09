@@ -15,7 +15,7 @@ export class PetFinderService {
     console.log("getting token")
     return this.http.post(
       "https://api.petfinder.com/v2/oauth2/token/",
-      environment.petFinderCeds,
+      environment.petFinderCeds
     )
   }
 

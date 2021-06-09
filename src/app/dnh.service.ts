@@ -10,5 +10,10 @@ export class DNHService {
 
   constructor(private http: HttpClient,) { }
 
+  getDogAPI(id: any){
+    return this.http.get(
+      "https://dognhome.azurewebsites.net/"+id
+    )
+  }
   // this.http.get<[]>(
 }

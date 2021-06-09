@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PetFinderService } from '../pet-finder.service'
+import { DNHService } from '../dnh.service'
 // import { from } from 'rxjs';
 
 @Component({
@@ -11,7 +12,7 @@ import { PetFinderService } from '../pet-finder.service'
 export class HomeComponent implements OnInit {
 
   public dogs: any;
-  constructor(private petFinder: PetFinderService) { }
+  constructor(private petFinder: PetFinderService, private dnhService: DNHService) { }
 
   getToken(){
     this.petFinder.GetToken().subscribe(token => {
@@ -28,9 +29,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getDogAPI(){
+    this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
+  }
+
+
   ngOnInit(): void {
     this.getToken()
     // this.getDogs()
+    this.getDogAPI()
   }
 
 }

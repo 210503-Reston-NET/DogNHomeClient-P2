@@ -1,9 +1,59 @@
-<ul *ngIf="dogs">
-    <li *ngFor="let dog of dogs.animals">
-        <p>Name: {{dog.name}}</p>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/User" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
-        <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink>First</a>
+      <ng-template ngbNavContent>First content</ng-template>
     </li>
-</ul>
-<app-login></app-login>
+    <li ngbNavItem>
+      <a ngbNavLink>Second</a>
+      <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+</ul> -->
+  <!-- <div [ngbNavOutlet]="nav"></div> -->
+<app-navbar></app-navbar>
+<div *ngIf="dogs" class="container">
+    <div class="row">
+        <div class="col-4">
+            <div id="size">
+                <!-- <mat-chip-list aria-label="Fish selection">
+                    <mat-chip>Small</mat-chip>
+                    <mat-chip>Medium</mat-chip>
+                    <mat-chip color="primary" selected>Large</mat-chip>
+                    <mat-chip color="accent" selected>X-Large</mat-chip>
+                  </mat-chip-list> -->
+            </div>
+        </div>
+        <div class="col-4 ">
+            <ul >
+                <li *ngFor="let dog of dogs.animals">
+                    <p>Name: {{dog.name}}</p>
+            
+                    <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+                    <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

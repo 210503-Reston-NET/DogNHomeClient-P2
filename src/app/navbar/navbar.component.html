@@ -1,0 +1,17 @@
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div>
+            <a routerLink="/User" class="nav-link">Profile</a>
+        </div>
+    </div>
+</div> -->
+<ul ngbNav #nav="ngbNav" class="nav">
+    <li ngbNavItem>
+      <a ngbNavLink routerLink="/User">Profile</a>
+      <!-- <ng-template ngbNavContent>First content</ng-template> -->
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Second</a>
+      <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+</ul>
