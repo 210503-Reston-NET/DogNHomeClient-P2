@@ -11,8 +11,18 @@ export class DNHService {
   constructor(private http: HttpClient,) { }
 
   getDogAPI(id: any){
+
+ 
+  const headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*');
+
     return this.http.get(
-      "https://dognhome.azurewebsites.net/"+id
+      "https://dognhome.azurewebsites.net/api/Dog/",
+      {
+        headers:
+          headers
+      }
     )
   }
   // this.http.get<[]>(

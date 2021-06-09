@@ -11,6 +11,9 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -44,7 +47,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AngularFireAuthModule,
     FlexLayoutModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebase),
-    NgbModule
+    NgbModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
