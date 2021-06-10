@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
@@ -12,7 +13,20 @@ import { DNHService } from '../dnh.service'
 export class HomeComponent implements OnInit {
 
   public dogs: any;
-  constructor(private petFinder: PetFinderService, private dnhService: DNHService) { }
+  public searchParams: FormGroup;
+
+  constructor(private petFinder: PetFinderService, 
+    private dnhService: DNHService,
+    fb: FormBuilder) { 
+      this.searchParams = fb.group({
+        
+        small: false,
+        medium: false,
+        large: false,
+        xlarge: false,
+
+      })
+    }
 
   getToken(){
     this.petFinder.GetToken().subscribe(token => {
