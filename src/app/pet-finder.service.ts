@@ -30,7 +30,6 @@ export class PetFinderService {
         headers:{
           Authorization: `Bearer ${this.token.access_token}`
         }
-
       }
     )
   }

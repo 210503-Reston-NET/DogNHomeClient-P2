@@ -43,6 +43,16 @@
                     <mat-chip color="accent" selected>X-Large</mat-chip>
                   </mat-chip-list> -->
             </div>
+            <section class="example-section" [formGroup]="searchParams">
+                <h4>Select your toppings:</h4>
+                <p><mat-checkbox formControlName="small">Pepperoni</mat-checkbox></p>
+                <p><mat-checkbox formControlName="medium">Extra Cheese</mat-checkbox></p>
+                <p><mat-checkbox formControlName="large">Mushroom</mat-checkbox></p>
+            </section>
+            <section class="example-section" [formGroup]="searchParams">
+                <h4>You chose:</h4>
+                {{searchParams.value | json}}
+            </section>
         </div>
         <div class="col-4 ">
 
