@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       })
     }
 
-  getToken(){
+  getToken(){ 
     this.petFinder.GetToken().subscribe(token => {
       this.petFinder.SetToken(token)
       console.log("token set")
