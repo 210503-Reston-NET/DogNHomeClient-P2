@@ -10,12 +10,16 @@ export class SearchFilterComponent implements OnInit {
 
   
   public gender: string = "";
+  public age: string = "";
+  public coat: string = "";
 
   public color: string = "primary";
 
   value: number = 80;
   min: number = 30;
   max: number = 130;
+
+
   
 
   constructor(fb: FormBuilder) {

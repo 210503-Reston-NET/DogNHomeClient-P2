@@ -21,4 +21,27 @@
         <mat-radio-button value="male" color="primary" class="gender-btn"><i class="fas fa-mars"></i></mat-radio-button>
         <mat-radio-button value="" color="primary" class="gender-btn">Either</mat-radio-button>
     </mat-radio-group>
+    <hr>
+</div>
+<div id="age" class="background">
+    <h4>Age: </h4>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="age" id="genderRadio">
+        <mat-radio-button value="baby" color="primary" class="gender-btn">Puppy</mat-radio-button>
+        <mat-radio-button value="young" color="primary" class="gender-btn">Young</mat-radio-button>
+        <mat-radio-button value="adult" color="primary" class="gender-btn">Adult</mat-radio-button>
+        <mat-radio-button value="senior" color="primary" class="gender-btn">Senior</mat-radio-button>
+        <mat-radio-button value="" color="primary" class="gender-btn">Any</mat-radio-button>
+    </mat-radio-group>
+    <hr>
+</div>
+<div class="background">
+    <h4>Coat Type: </h4>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="coat" id="genderRadio">
+        <mat-radio-button value="short" color="primary" class="gender-btn">Short</mat-radio-button>
+        <mat-radio-button value="medium" color="primary" class="gender-btn">Medium</mat-radio-button>
+        <mat-radio-button value="long" color="primary" class="gender-btn">Long</mat-radio-button>
+        <mat-radio-button value="curl" color="primary" class="gender-btn">Curly</mat-radio-button>
+        <mat-radio-button value="wire" color="primary" class="gender-btn">Fine</mat-radio-button>
+        <mat-radio-button value="" color="primary" class="gender-btn">Any</mat-radio-button>
+    </mat-radio-group>
 </div>
