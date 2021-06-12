@@ -1,5 +1,6 @@
-import { Component, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChange, SimpleChanges, Input } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-filter',
@@ -8,6 +9,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class SearchFilterComponent implements OnInit {
 
+  // @Input() dogs: any;
+  // @Output() passFilteredDogs = new EventEmitter<string>();
   
   public gender: string = "";
   public age: string = "";
@@ -72,6 +75,7 @@ export class SearchFilterComponent implements OnInit {
     }
   
     console.log(request)
+    // this.passFilteredDogs.emit(request);
 
   }
 

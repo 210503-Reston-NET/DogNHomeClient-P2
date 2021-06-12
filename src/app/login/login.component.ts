@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+// import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import * as firebase from "firebase";
+import { ActivatedRoute, Router } from '@angular/router';
+import {AuthProvider} from 'ngx-auth-firebaseui';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +11,19 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  providers: any = AuthProvider;
+  constructor(
+    private router: Router
+  ) {}
+
+  printUser2(){
+    // console.log(firebase.auth().currentUser);
+
+  }
 
   printUser(event: any) {
     console.log(event);
+    this.router.navigate(['']);
   }
 
   ngOnInit(): void {
