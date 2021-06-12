@@ -36,7 +36,11 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {path: "Login", component: LoginComponent},
-  {path: "*", component: LoginComponent}
+  {
+    path: "*", 
+    component: HomeComponent,
+    canActivate: [LoggedInGuard],
+  }
 ];
 
 @NgModule({

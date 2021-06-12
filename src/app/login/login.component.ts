@@ -26,7 +26,13 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  // checkUser(){
+  //   console.log("user")
+  //   if(firebase.default.auth().currentUser){
+  //   }
+  // }
   ngOnInit(): void {
+    // this.checkUser()
   }
 
 }

@@ -133,13 +133,13 @@ export class HomeComponent implements OnInit {
     // this.getDogs()
     // this.getDogAPI()
     // this.getTest()
-    this.printUser2()
+    // this.printUser2()
   }
 
-  printUser2(){
+  // printUser2(){
 
-    console.log( "Is the user here", firebase.default.auth().currentUser);
+  //   console.log( "Is the user here", firebase.default.auth().currentUser);
 
-  }
+  // }
 
 }

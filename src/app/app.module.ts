@@ -54,11 +54,13 @@ import { HomeMainComponent } from './home/home-main/home-main.component';
     BrowserAnimationsModule,
     AngularFireAuthModule,
     FlexLayoutModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase,
+    NgxAuthFirebaseUIModule.forRoot(
+      environment.firebase,
       () => 'DogNHome',
       {
-      authGuardFallbackURL: 'Login',
-      authGuardLoggedInURL: 'User'
+      enableFirestoreSync: true,
+      authGuardFallbackURL: '/Login',
+      authGuardLoggedInURL: '/Home'
     }),
     NgbModule,
     MatCardModule,
