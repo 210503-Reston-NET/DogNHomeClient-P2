@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -13,12 +13,30 @@ export class SearchFilterComponent implements OnInit {
   public age: string = "";
   public coat: string = "";
 
+  location: any = {
+    city: "",
+    state: "",
+    postalCode: ""
+  }
+
   public color: string = "primary";
 
   value: number = 80;
   min: number = 30;
   max: number = 130;
 
+  public distance: number = 100;
+  public minDis: number = 5;
+  public maxDis: number = 500;
+
+  disLabel(val: number){
+    return val
+  }
+
+  public children = false;
+  public cats = false;
+  public dogs = false;
+  public houseTrained = false;
 
   
 
@@ -28,6 +46,38 @@ export class SearchFilterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  filterDogs(){
+    console.log("filtering")
+    let request = "https://api.petfinder.com/v2/animals?type=dog&size=" + this.findSizeVal() +
+    "&good_with_children" + this.children +
+    "&good_with_cats" + this.cats +
+    "&good_with_dogs" + this.dogs +
+    "&house_trained" + this.houseTrained;
+    if(this.gender){
+      request += "&gender=" + this.gender
+    }
+    if(this.age){
+      request += "&age=" + this.age
+    }
+    if(this.coat){
+      request += "&coat=" + this.coat
+    }
+    if(this.location.postalCode.length === 5){
+      request += "&location=" + this.location.postalCode
+      + "&distance=" + this.distance
+    }else if(this.location.city && this.location.state){
+      request += "&location=" + this.location.city.trim().toLowerCase() + "," + this.location.state.trim().toLowerCase()
+      + "&distance=" + this.distance
+    }
+  
+    console.log(request)
+
+  }
+
+  // ngOnChanges(changes: SimpleChanges){
+  //   console.log(this.postalCode)
+  // }
 
   findSizeVal(){
     if(this.value > 110){
