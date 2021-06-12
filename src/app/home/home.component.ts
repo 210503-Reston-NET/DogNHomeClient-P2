@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getDogAPI(){
-    this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  }
+  // getDogAPI(){
+  //   this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
+  // }
 
   getTest(){
     console.log("starting test")

@@ -14,14 +14,11 @@
         id="size-slider"
     ></mat-slider>
 </div>
-<div id="gender">
+<div id="gender" class="background">
     <h4>Gender: </h4>
-    <i class="fas fa-mars"></i>
-    <i class="fas fa-venus"></i>
-    <mat-radio-group aria-label="Select an option" [(ngModel)]="gender" >
-        <mat-radio-button value="female" color="primary">Female</mat-radio-button>
-        <mat-radio-button value="male">Male</mat-radio-button>
-        <mat-radio-button value="">Either</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="gender" id="genderRadio">
+        <mat-radio-button value="female" color="primary" class="gender-btn"><i class="fas fa-venus"></i></mat-radio-button>
+        <mat-radio-button value="male" color="primary" class="gender-btn"><i class="fas fa-mars"></i></mat-radio-button>
+        <mat-radio-button value="" color="primary" class="gender-btn">Either</mat-radio-button>
     </mat-radio-group>
-      
 </div>
