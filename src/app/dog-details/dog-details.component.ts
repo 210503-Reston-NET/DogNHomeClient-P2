@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-
-import { PetFinderService } from '../pet-finder.service'
+import { PetFinderService } from '../pet-finder.service';
 
 @Component({
   selector: 'app-dog-details',
@@ -27,7 +25,6 @@ export class DogDetailsComponent implements OnInit {
   getDetails(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.petFinder.GetDog(id).subscribe(dog => {
-      console.log(dog)
       this.dog = dog})
   }
   ngOnInit(): void {

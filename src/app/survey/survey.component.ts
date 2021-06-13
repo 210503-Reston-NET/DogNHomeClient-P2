@@ -121,14 +121,11 @@ export class SurveyComponent implements OnInit {
     this.dogtolist.dogid == dogs.id;
     
   }
-  AddTheS
+  AddTheSurveyList(): void {
   
-  
-        this.router.navigate(["List/:id"]);
-        
-      }
-    ).catch(err => console.log(err));
-    
+  this.dnhService.AddDogList(this.surveyList).then( result =>
+        this.router.navigate(["List/:id"])
+  ).catch(err => console.log(err));
   }
 }
 

@@ -22,8 +22,8 @@ export class PetFinderService {
   SetToken(token: any){
     this.token = token
   }
-
-  GetDog(id: any,){
+  /// Returns a singular dog with the given apiKey given from the petfinder api
+  GetDog(id: any,) {
     return this.http.get(
       `https://api.petfinder.com/v2/animals/${id}`,
       {
@@ -33,16 +33,46 @@ export class PetFinderService {
       }
     )
   }
+  /// Returns the full list of dogs from the petfinder api
   GetDogs(){
-    console.log("getting dogs", this.token)
-
     return this.http.get(
       `https://api.petfinder.com/v2/animals?type=dog&page=1`,
       {
         headers:{
           Authorization: `Bearer ${this.token.access_token}`
         }
+      }
+    )
+  }
+  GetDogsFiltered(request: string){
+    return this.http.get(
+      request,
+      {
+        headers:{
+          Authorization: `Bearer ${this.token.access_token}`
+        }
+      }
+    )
+  }
 
+  getLocation(id: number){
+    return this.http.get(
+      `https://api.petfinder.com/v2/organizations/${id}`,
+      {
+        headers:{
+          Authorization: `Bearer ${this.token.access_token}`
+        }
+      }
+    )
+  }
+
+  getTest(){
+    return this.http.get(
+      `https://api.petfinder.com/v2/organizations/CA912`,
+      {
+        headers:{
+          Authorization: `Bearer ${this.token.access_token}`
+        }
       }
     )
   }

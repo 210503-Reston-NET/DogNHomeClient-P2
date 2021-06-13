@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
+import { Forum } from './models/Forum';
+import { Post } from './models/Post';
 import {doglist} from '../app/survey/DogList';
 import { listeddog } from './survey/ListedDog';
 @Injectable({
@@ -12,9 +14,10 @@ export class DNHService {
   baseURLLD: string = "https://dognhome.azurewebsites.net/api/ListedDog/";
   constructor(private http: HttpClient,) { }
 
-  getDogAPI(id: any){
+  BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
+  url: string = '';
 
- 
+  getDogAPI(id: any){
   const headers= new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -27,6 +30,21 @@ export class DNHService {
       }
     )
   }
+
+  GetForums(): Promise<Forum[]> {
+    this.url = this.BaseURL + 'Forum/';
+    return this.http.get<Forum[]>(this.url).toPromise();
+  }
+  AddForum(newForum: Forum): Promise<Forum>{
+    this.url = this.BaseURL + 'Forum/';
+    return this.http.post<Forum>(this.url, newForum).toPromise();
+  }
+  //Posts
+  GetPosts(forumID: number): Promise<Post[]> {
+    this.url = this.BaseURL + 'Post/' + forumID;
+    alert(this.url);
+    return this.http.get<Post[]>(this.url).toPromise();
+  }
   AddDogList(newDogList: doglist) : Promise<doglist>
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
@@ -35,7 +53,7 @@ export class DNHService {
   {
     return this.http.post<listeddog>(this.baseURLLD, newListedDog).toPromise() 
   }
-  GetAllRestaurants(): Promise<doglist> {
+  GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
   // this.http.get<[]>(

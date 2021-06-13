@@ -55,7 +55,7 @@ export class DogListComponent implements OnInit {
     this.getToken()
     // this.getDogs()
     this.getDogAPI()
-    this.dnhService.GetAllRestaurants().then(result => this.dogs = result);
+    this.dnhService.GetAllDogList().then(result => this.dogs = result);
 
   }
 
