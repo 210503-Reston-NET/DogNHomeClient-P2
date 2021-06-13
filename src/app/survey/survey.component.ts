@@ -121,14 +121,9 @@ export class SurveyComponent implements OnInit {
     this.dogtolist.dogid == dogs.id;
     
   }
-  AddTheSurveyList():void
-  {
-    alert(`Ssurvey1 has been added`);
-    this.dnhService.AddDogList(this.surveyList).then(
-      result => {
-        this.dogtolist.id = this.surveyList.id
-        this.dnhService.AddListedDog(this.dogtolist)
-        console.log(result);
+  AddTheS
+  
+  
         this.router.navigate(["List/:id"]);
         
       }
