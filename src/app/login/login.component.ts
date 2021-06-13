@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import { ActivatedRoute, Router } from '@angular/router';
 import {AuthProvider} from 'ngx-auth-firebaseui';
+import { DNHService } from '../dnh.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   printUser(event: any) {
     console.log(event);
+    // DNHService.adduser
     this.router.navigate(['']);
   }
 

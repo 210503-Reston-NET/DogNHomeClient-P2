@@ -8,6 +8,7 @@ import { Output, EventEmitter } from '@angular/core';
 
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
+import { FirebaseApp } from '@angular/fire';
 // import { from } from 'rxjs';
 
 @Component({
@@ -111,6 +112,7 @@ export class HomeComponent implements OnInit {
   }
 
   getDogs(){
+    this.printUser2()
     this.petFinder.GetDogs().subscribe(dogs => {
       console.log(dogs)
       this.dogsArr = dogs;
@@ -133,13 +135,14 @@ export class HomeComponent implements OnInit {
     // this.getDogs()
     // this.getDogAPI()
     // this.getTest()
-    // this.printUser2()
+    this.printUser2()
   }
 
-  // printUser2(){
+  printUser2(){
+    
 
-  //   console.log( "Is the user here", firebase.default.auth().currentUser);
+    console.log( "Is the user here", firebase.default.auth().currentUser);
 
-  // }
+  }
 
 }
