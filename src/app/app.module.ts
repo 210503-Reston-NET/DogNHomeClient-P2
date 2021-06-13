@@ -25,6 +25,9 @@ import { SurveyComponent } from './survey/survey.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ForumComponent } from './Components/forum/forum.component';
+import { AddForumComponent } from './Components/add-forum/add-forum.component';
+import { GetpostsComponent } from './Components/getposts/getposts.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     DogListComponent,
     SurveyComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    ForumComponent,
+    AddForumComponent,
+    GetpostsComponent
     
   ],
   imports: [

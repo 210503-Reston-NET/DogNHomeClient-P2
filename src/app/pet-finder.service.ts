@@ -22,8 +22,8 @@ export class PetFinderService {
   SetToken(token: any){
     this.token = token
   }
-
-  GetDog(id: any,){
+  /// Returns a singular dog with the given apiKey given from the petfinder api
+  GetDog(id: any,) {
     return this.http.get(
       `https://api.petfinder.com/v2/animals/${id}`,
       {
@@ -33,6 +33,7 @@ export class PetFinderService {
       }
     )
   }
+  /// Returns the full list of dogs from the petfinder api
   GetDogs(){
     console.log("getting dogs", this.token)
 

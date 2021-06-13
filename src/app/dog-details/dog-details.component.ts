@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-
-import { PetFinderService } from '../pet-finder.service'
+import { PetFinderService } from '../pet-finder.service';
 
 @Component({
   selector: 'app-dog-details',
