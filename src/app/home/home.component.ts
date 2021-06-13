@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+// import * as firebase from "firebase";
 // import {FormBuilder, FormGroup} from '@angular/forms';
-import * as firebase from "firebase";
-// import { first } from 'rxjs/operators';import { Component, OnInit, SimpleChange, SimpleChanges, Input } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import { Output, EventEmitter } from '@angular/core';
+// import { Output, EventEmitter } from '@angular/core';
 
 
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
-import { FirebaseApp } from '@angular/fire';
-import { FirestoreSyncService } from 'ngx-auth-firebaseui';
+// import { FirebaseApp } from '@angular/fire';
+// import { FirestoreSyncService } from 'ngx-auth-firebaseui';
 import { AngularFireAuth } from '@angular/fire/auth';
-// import { from } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -122,10 +119,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // getDogAPI(){
-  //   this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  // }
-
   getTest(){
     console.log("starting test")
     this.petFinder.getTest().subscribe(
@@ -136,7 +129,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getToken()
     // this.getDogs()
-    // this.getDogAPI()
     // this.getTest()
     this.printUser2()
   }
@@ -145,8 +137,6 @@ export class HomeComponent implements OnInit {
     this.af.authState.subscribe(auth => {
       console.log(auth)
     })
-    console.log(this.af.currentUser)
-    // console.log( "Is the user here", firebase.default.auth().currentUser);
 
   }
 
