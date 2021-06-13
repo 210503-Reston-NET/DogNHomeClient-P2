@@ -6,7 +6,7 @@
 
 <div  class="container-fluid" >
     <div class="row">
-        <div class="col-4 background">
+        <div class="col-md-4 background">
             <div class="background" id="survey-suggest">
                 <p>Narrow your search with a helpful <a routerLink="/Survey">Survey</a>!</p>
             </div>
@@ -100,7 +100,7 @@
               <button mat-raised-button color="primary" (click)="filterDogs()">Filter</button>
           </div>
         </div>
-        <div class="col-8 " *ngIf="dogsArr">
+        <div class="col-md-8 " *ngIf="dogsArr">
             <!-- <mat-card class="example-card" *ngFor="let dog of dogs.animals">
                 <mat-card-header>
                   <div mat-card-avatar class="example-header-image"></div>
@@ -132,5 +132,4 @@
         </div>
     </div>
 </div>
-<!-- </ng-template> -->
 
