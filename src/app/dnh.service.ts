@@ -31,6 +31,10 @@ export class DNHService {
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
   }
+  AddListedDog(newListedDog: listeddog) : Promise<listeddog>
+  {
+    return this.http.post<listeddog>(this.baseURLLD, newListedDog).toPromise() 
+  }
   GetAllRestaurants(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
