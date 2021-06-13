@@ -20,6 +20,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +35,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchFilterComponent } from './home/search-filter/search-filter.component';
 import { HomeMainComponent } from './home/home-main/home-main.component';
+import { ForumComponent } from './Components/forum/forum.component';
+import { AddForumComponent } from './Components/add-forum/add-forum.component';
+import { GetpostsComponent } from './Components/getposts/getposts.component';
+import { AddpostsComponent } from './Components/addposts/addposts.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,11 @@ import { HomeMainComponent } from './home/home-main/home-main.component';
     LoginComponent,
     NavbarComponent,
     SearchFilterComponent,
-    HomeMainComponent
+    HomeMainComponent,
+    ForumComponent,
+    AddForumComponent,
+    GetpostsComponent,
+    AddpostsComponent,
     
   ],
   imports: [
@@ -75,7 +85,8 @@ import { HomeMainComponent } from './home/home-main/home-main.component';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

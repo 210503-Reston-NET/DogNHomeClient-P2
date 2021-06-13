@@ -4,6 +4,7 @@
     <div class="row">
       <img (click)="goHome()" src="../../assets/Screen Shot 2021-06-04 at 8.57.08 AM.png" id="dnhImg" alt="">
     </div>
+<<<<<<< HEAD
   </div>
 </div>
 <mat-toolbar color="primary" id="nav">
@@ -11,3 +12,24 @@
   <a routerLink="/User">Saved Dogs</a>
   <a routerLink="/User">Message Boards</a>
 </mat-toolbar>
+=======
+</div> -->
+<ul ngbNav #nav="ngbNav" class="nav">
+    <li ngbNavItem>
+      <a ngbNavLink routerLink="/User">Profile</a>
+      <!-- <ng-template ngbNavContent>First content</ng-template> -->
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Second</a>
+      <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Second</a>
+      <ng-template ngbNavContent>Survey</ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink routerLink="/Survey">Survey</a>
+      <!-- <ng-template ngbNavContent>First content</ng-template> -->
+    </li>
+</ul>
+>>>>>>> 1ea54a39c41c6971ebc07939f441d0bfa37f8191
