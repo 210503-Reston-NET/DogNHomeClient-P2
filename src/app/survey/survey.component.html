@@ -1,1 +1,130 @@
-<p>survey works!</p>
+<mat-list role="list" >
+    <mat-list-item role="listitem">Question 1: What dog size do you prefer?</mat-list-item>
+        <ul>
+            
+           
+            <mat-list role="list">
+                <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="size">
+                <mat-list role="list">
+                <mat-radio-button class="example-radio-button" *ngFor="let sz of sizes" [value] = "sz">
+                   {{sz}}             
+                </mat-radio-button>
+                </mat-list> 
+              </mat-radio-group>
+              <div>Your selection size is: {{size}}</div>
+            </mat-list>
+        
+        </ul>
+       
+
+    <mat-list-item role="listitem" color="primary">Question 2: Do you prefer family friendly dogs?</mat-list-item>
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="children">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let ch of childrens" [value] = "ch">
+               {{ch}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{children}}</div>
+        </mat-list>
+    </ul>
+
+    <mat-list-item role="listitem" color="primary">Question 3: Do you prefer neutered dogs?</mat-list-item>
+    
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="spray_neutered">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let sn of spray_neutereds" [value] = "sn">
+               {{sn}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{spray_neutered}}</div>
+        </mat-list>
+    </ul>
+    
+    <mat-list-item role="listitem" color="primary">Question 4: Do you prefer pure breed dogs?</mat-list-item>
+    
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="mixed">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let mx of mixes" [value] = "mx">
+               {{mx}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{mixed}}</div>
+        </mat-list>
+    </ul>
+
+    <mat-list-item role="listitem">Question 5: Do you prefer male or female dog?</mat-list-item>
+
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="gender">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let gd of genders" [value] = "gd">
+               {{gd}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{gender}}</div>
+        </mat-list>
+    </ul>
+    <mat-list-item role="listitem">Question 6: Do you prefer Home trained dogs?</mat-list-item>
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="house_trained">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let ht of house_traineds" [value] = "ht">
+               {{ht}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{house_trained}}</div>
+        </mat-list>
+    </ul>
+    <mat-list-item role="listitem">Question 7: Do you prefer a young dog or an older dog ?</mat-list-item>
+    <ul>
+        <mat-list role="list">
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="age">
+            <mat-list role="list">
+            <mat-radio-button class="example-radio-button" *ngFor="let ag of ages" [value] = "ag">
+               {{ag}}             
+            </mat-radio-button>
+            </mat-list> 
+          </mat-radio-group>
+          <div>Your selection size is: {{age}}</div>
+        </mat-list>
+    </ul>
+
+</mat-list>
+
+<div>
+    <button type="submit" class="btn btn-secondary" (click) = "GoToHome()">Submit Survey</button>
+</div>

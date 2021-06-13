@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { SurveyComponent } from './survey.component';
+import { MatListModule } from '@angular/material/list';
+
 
 describe('SurveyComponent', () => {
   let component: SurveyComponent;
