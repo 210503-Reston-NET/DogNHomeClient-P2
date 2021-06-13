@@ -9,6 +9,8 @@ import { Output, EventEmitter } from '@angular/core';
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
 import { FirebaseApp } from '@angular/fire';
+import { FirestoreSyncService } from 'ngx-auth-firebaseui';
+import { AngularFireAuth } from '@angular/fire/auth';
 // import { from } from 'rxjs';
 
 @Component({
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private petFinder: PetFinderService, 
     private dnhService: DNHService,
+    private af: AngularFireAuth
     ) { 
        
     }
@@ -107,12 +110,12 @@ export class HomeComponent implements OnInit {
       this.petFinder.SetToken(token)
       console.log("token set")
       this.getDogs()
-      this.getTest()
+      // this.getTest()
     })
   }
 
   getDogs(){
-    this.printUser2()
+    // this.printUser2()
     this.petFinder.GetDogs().subscribe(dogs => {
       console.log(dogs)
       this.dogsArr = dogs;
@@ -139,9 +142,11 @@ export class HomeComponent implements OnInit {
   }
 
   printUser2(){
-    
-
-    console.log( "Is the user here", firebase.default.auth().currentUser);
+    this.af.authState.subscribe(auth => {
+      console.log(auth)
+    })
+    console.log(this.af.currentUser)
+    // console.log( "Is the user here", firebase.default.auth().currentUser);
 
   }
 
