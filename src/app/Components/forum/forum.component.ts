@@ -52,4 +52,8 @@ export class ForumComponent implements OnInit {
     this.router.navigate(['addForum']);
   }
 
+  GoToPosts(forumID: number) {
+    this.router.navigate(['Post'], { queryParams: {forumId: forumID } });
+  }
+
 }

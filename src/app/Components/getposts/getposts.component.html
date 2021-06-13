@@ -1,2 +1,47 @@
 <app-navbar></app-navbar>
-<p>getposts works!</p>
+<button class="btn-primary">Start a new Post!</button>
+<div class="row justify-content-start">
+  <div class="container col-8" *ngIf="posts.length > 0 else noPosts">
+    <table class="table">
+      <thead>
+      <th>Posts</th>
+      </thead>
+      <tbody *ngFor="let post of posts">
+        <tr>
+          <td>
+            <div>
+              <i class="fa fa-newspaper-o" aria-hidden="true"> {{post.topic}}</i>
+              <span> - <p>{{post.userName}}</p></span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <ng-template #noPosts>
+    <div class="col-8">
+      <h4>Congradulations! You are the first to start a Post for this Forum. Make it a good one.</h4>
+    </div>
+  </ng-template>
+
+  <div class="col-4">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Adopt {{dogs.animals[0].name}}!</mat-card-title>
+        {{dogs.animals[0].videos.embed}}
+      </mat-card-header>
+      <mat-card-content class="justify-content-center">
+        <h3>About Me</h3>
+        <p *ngIf="dogs.animals[0].description else noDescription">
+          {{dogs.animals[0].description}}
+        </p>
+        <ng-template #noDescription>
+          <p>
+            {{dogs.animals[0].name}} is a {{dogs.animals[0].age}} {{dogs.animals[0].size}} {{dogs.animals[0].breeds.primary}}
+          </p>
+        </ng-template>
+        <a routerLink="/DogDetails/{{dogs.animals[0].id}}">Show Dog Details</a>
+      </mat-card-content>
+    </mat-card>
+  </div>

@@ -8,12 +8,10 @@
         <th>Forums</th>
         </thead>
         <tbody *ngFor="let forum of forums">
-          <tr>
+          <tr >
             <td>
               <div>
-                <span>
-                  <a [routerLink]="['/Forum','{{forum.forumID}}']">{{forum.topic}}</a>
-                </span>
+                  <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToPosts(forum.forumID)">   {{forum.topic}}</i>
                 <span> - {{forum.description}}</span>
               </div>
             </td>

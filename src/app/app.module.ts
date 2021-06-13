@@ -28,6 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
+import { AddpostsComponent } from './Components/addposts/addposts.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { GetpostsComponent } from './Components/getposts/getposts.component';
     NavbarComponent,
     ForumComponent,
     AddForumComponent,
-    GetpostsComponent
+    GetpostsComponent,
+    AddpostsComponent
     
   ],
   imports: [

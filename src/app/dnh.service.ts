@@ -35,12 +35,11 @@ export class DNHService {
   }
   AddForum(newForum: Forum): Promise<Forum>{
     this.url = this.BaseURL + 'Forum/';
-    alert(this.url);
     return this.http.post<Forum>(this.url, newForum).toPromise();
   }
   //Posts
-  GetPosts(forumID: string | null): Promise<Post[]> {
-    this.url = this.BaseURL + 'Forum/' + forumID;
+  GetPosts(forumID: number): Promise<Post[]> {
+    this.url = this.BaseURL + 'Post/' + forumID;
     alert(this.url);
     return this.http.get<Post[]>(this.url).toPromise();
   }

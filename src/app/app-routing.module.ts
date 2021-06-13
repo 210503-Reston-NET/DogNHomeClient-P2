@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
+import { AddpostsComponent } from './Components/addposts/addposts.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: "*", component: LoginComponent },
   { path: "Forum", component: ForumComponent },
   { path: "addForum", component: AddForumComponent },
-  { path: "Forum/:id", component: GetpostsComponent},
+  { path: "Post", component: GetpostsComponent },
+  { path: "addPost", component: AddpostsComponent},
 ];
 
 @NgModule({

@@ -12,7 +12,7 @@ import { PetFinderService } from '../../pet-finder.service';
 export class GetpostsComponent implements OnInit {
 
   posts: Post[] = [];
-  id: string | null = '';
+  dogs: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +21,38 @@ export class GetpostsComponent implements OnInit {
     private petFinder: PetFinderService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params =>
-      this.id = params.get('id')
-    );
+    this.route.queryParams.subscribe(
+      params => {
+        this.service.GetPosts(params.forumId).then(
+          result => {
+            this.posts = result;
+          }
+        )
+      }
+    )
 
-    this.service.GetPosts(this.id).then(results =>
-      this.posts = results)
+    this.getToken()
+
+  }
+  getToken() {
+    this.petFinder.GetToken().subscribe(token => {
+      this.petFinder.SetToken(token)
+      this.getDogs()
+    })
   }
 
+  getDogs() {
+    this.petFinder.GetDogs().subscribe(dogs => {
+      console.log(dogs)
+      this.dogs = dogs;
+    });
+  }
+
+  AddForum(): void {
+    this.router.navigate(['addForum']);
+  }
+
+  GoToPosts(forumID: number) {
+    this.router.navigate(['Post'], { queryParams: { forumId: forumID } });
+  }
 }
