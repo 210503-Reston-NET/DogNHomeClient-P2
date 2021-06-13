@@ -1,17 +1,12 @@
-<!-- <div class="container-fluid">
+
+<div class="background jumbotron justify-content-center">
+  <div class="container justify justify-content-center">
     <div class="row">
-        <div>
-            <a routerLink="/User" class="nav-link">Profile</a>
-        </div>
+      <img (click)="goHome()" src="../../assets/Screen Shot 2021-06-04 at 8.57.08 AM.png" id="dnhImg" alt="">
     </div>
-</div> -->
-<ul ngbNav #nav="ngbNav" class="nav">
-    <li ngbNavItem>
-      <a ngbNavLink routerLink="/User">Profile</a>
-      <!-- <ng-template ngbNavContent>First content</ng-template> -->
-    </li>
-    <li ngbNavItem>
-      <a ngbNavLink>Second</a>
-      <ng-template ngbNavContent>Second content</ng-template>
-    </li>
-</ul>
+  </div>
+</div>
+<mat-toolbar color="primary" id="nav">
+  <a routerLink="/User">My Profile</a>
+  <a routerLink="/User">Saved Dogs</a>
+</mat-toolbar>

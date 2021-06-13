@@ -1,18 +1,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<div class="background jumbotron justify-content-center">
-  <div class="container justify justify-content-center">
-    <div class="row">
-      <img src="../../assets/Screen Shot 2021-06-04 at 8.57.08 AM.png" id="dnhImg" alt="">
-    </div>
-  </div>
-</div>
+
 
 <app-navbar></app-navbar>
 
 <div  class="container-fluid" >
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 background">
+            <div class="background" id="survey-suggest">
+                <p>Narrow your search with a helpful <a routerLink="/Survey">Survey</a>!</p>
+            </div>
           <div class="background size-slider-box" >
             <h4>Size: </h4>
             <div class="dog-icon-container">
@@ -103,7 +100,7 @@
               <button mat-raised-button color="primary" (click)="filterDogs()">Filter</button>
           </div>
         </div>
-        <div class="col-4 " *ngIf="dogsArr">
+        <div class="col-8 " *ngIf="dogsArr">
             <!-- <mat-card class="example-card" *ngFor="let dog of dogs.animals">
                 <mat-card-header>
                   <div mat-card-avatar class="example-header-image"></div>
@@ -120,7 +117,7 @@
                     <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
                 </mat-card-actions>
             </mat-card> -->
-        <mat-grid-list cols="1" rowHeight="1:2">
+        <mat-grid-list cols="2" rowHeight="1:2">
             <mat-grid-tile *ngFor="let dog of dogsArr.animals">
                 <ul >
                     <li>
