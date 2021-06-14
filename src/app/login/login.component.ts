@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   providers: any = AuthProvider;
   constructor(
-    private router: Router
+    private router: Router,
+    private dnh: DNHService
   ) {}
 
   printUser2(){
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   printUser(event: any) {
-    console.log(event);
-    // DNHService.adduser
+    console.log(event.uid);
+    this.dnh.userSignIn(event.uid)
     this.router.navigate(['']);
   }
 

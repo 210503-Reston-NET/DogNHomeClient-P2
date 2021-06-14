@@ -1,14 +1,59 @@
-<div *ngIf="dog">
-    <h1>{{dog.animal.name}}</h1>
-    <hr>
-    <img *ngFor="let photo of dog.animal.photos" src="{{photo.small}}" alt="">
-    <h3>Age: {{dog.animal.age}}</h3>
-    <hr>
-    <h3>Breed: {{dog.animal.breeds.primary}}, <span *ngIf="dog.animal.breeds.secondary">{{dog.animal.breeds.secondary}}</span></h3>
-    <hr>
-    <h3>Tags: </h3>
-    <p *ngFor="let tag of dog.animal.tags">{{tag}}</p>
-    <hr>
-    <h3>Description: {{dog.animal.description}}</h3>
 
+<!-- <app-navbar></app-navbar> -->
+<div *ngIf="dog && dogPhotos" class="background">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <i class="fas fa-arrow-left"></i>
+            <img class="top-img" src="../../assets/Screen Shot 2021-06-04 at 8.57.08 AM.png" alt="">
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="mainCon ">
+                <div class="dog-name">
+                    <h1>Meet {{dog.animal.name}}!</h1>
+                </div>
+                <ngb-carousel class="carouse">
+                    <ng-template ngbSlide *ngFor="let photo of dogPhotos" >
+                        <div class="picsum-img-wrapper carouse justify-content-center">
+                          <img class="c-photo" [src]="photo.medium" alt="Random first slide">
+                        </div>
+                    </ng-template>
+                    <!-- <img *ngFor="let photo of dog.animal.photos" src="{{photo.small}}" alt=""> -->
+                </ngb-carousel>
+                <div class="dog-info">
+                    <h3>Age: {{dog.animal.age}}</h3>
+                    <hr>
+                    <h3>Breed: {{dog.animal.breeds.primary}}, <span *ngIf="dog.animal.breeds.secondary">{{dog.animal.breeds.secondary}}</span></h3>
+                    <hr>
+                    <h3>Tags: </h3>
+                    <p *ngFor="let tag of dog.animal.tags">{{tag}}</p>
+                    <hr>
+                    <h3>Description: {{dog.animal.description}}</h3>
+
+                </div>
+
+                <div class="loc-div" *ngIf="loc">
+                    <h1>If you want to bring {{dog.animal.name}} home reach out to {{loc.organization.name}}</h1>
+                    <!-- <div class="name">
+                        <h1>{{loc.organization.name}}</h1>
+                    </div> -->
+                    <div class="address" *ngIf="loc.organization.address">
+                        <p>{{loc.organization.name}}</p>
+                        <p *ngIf="loc.organization.address.address1">{{loc.organization.address.address1}}</p>
+                        <p *ngIf="loc.organization.address.address2">{{loc.organization.address.address2}}</p>
+                        <p *ngIf="loc.organization.address.city">{{loc.organization.address.city}}, {{loc.organization.address.state}} {{loc.organization.address.postcode}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-6 loc-div">
+                <div class="name">
+                    <h1>{{loc.organization.name}}</h1>
+
+                </div>
+            </div> -->
+        </div>
+
+    </div>
 </div>

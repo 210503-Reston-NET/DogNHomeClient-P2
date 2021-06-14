@@ -45,6 +45,11 @@ export class PetFinderService {
     )
   }
   GetDogsFiltered(request: string){
+    // this returns an observable that will give you an object as a result
+    // subscribe to the obserable and then create a function for it to handle the below
+    // the first value of the object is animal
+    // inside animal is an array [<dog>] of dogs
+    // each dog is an object that has property id: dogs.animal.foreach(dog => dog.id = varibale)
     return this.http.get(
       request,
       {
