@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<button class="btn-primary">Start a new Post!</button>
+<button class="btn-primary" (click)="AddPost()">Start a new Post!</button>
 <div class="row justify-content-start">
   <div class="container col-8" *ngIf="posts.length > 0 else noPosts">
     <table class="table">

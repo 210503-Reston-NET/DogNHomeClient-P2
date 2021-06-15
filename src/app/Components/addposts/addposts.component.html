@@ -1,1 +1,12 @@
-<p>addposts works!</p>
+<app-navbar></app-navbar>
+
+<div class="container transparent">
+  <form (ngSubmit)="onSubmit()" #forumForm="ngForm">
+    <div class="form-group">
+      <label for="topic">Topic: </label>
+      <input type="text" [(ngModel)]="newPost.topic" class="form-control" #name="ngModel"
+             placeholder="Give a single breath description of the topic you are covering" name="forum">
+    </div>
+    <button type="submit" class="btn btn-warning">Create this Forum</button>
+  </form>
+</div>
