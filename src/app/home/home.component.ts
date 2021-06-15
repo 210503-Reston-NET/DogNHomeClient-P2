@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+// import * as firebase from "firebase";
 // import {FormBuilder, FormGroup} from '@angular/forms';
-import * as firebase from "firebase";
-// import { first } from 'rxjs/operators';import { Component, OnInit, SimpleChange, SimpleChanges, Input } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import { Output, EventEmitter } from '@angular/core';
+// import { Output, EventEmitter } from '@angular/core';
 
 
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
-import { FirebaseApp } from '@angular/fire';
-// import { from } from 'rxjs';
+// import { FirebaseApp } from '@angular/fire';
+// import { FirestoreSyncService } from 'ngx-auth-firebaseui';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -52,6 +51,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private petFinder: PetFinderService, 
     private dnhService: DNHService,
+    private af: AngularFireAuth
     ) { 
        
     }
@@ -107,21 +107,17 @@ export class HomeComponent implements OnInit {
       this.petFinder.SetToken(token)
       console.log("token set")
       this.getDogs()
-      this.getTest()
+      // this.getTest()
     })
   }
 
   getDogs(){
-    this.printUser2()
+    // this.printUser2()
     this.petFinder.GetDogs().subscribe(dogs => {
       console.log(dogs)
       this.dogsArr = dogs;
     });
   }
-
-  // getDogAPI(){
-  //   this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  // }
 
   getTest(){
     console.log("starting test")
@@ -133,15 +129,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getToken()
     // this.getDogs()
-    // this.getDogAPI()
     // this.getTest()
     this.printUser2()
   }
 
   printUser2(){
-    
-
-    console.log( "Is the user here", firebase.default.auth().currentUser);
+    this.af.authState.subscribe(auth => {
+      console.log(auth)
+    })
 
   }
 

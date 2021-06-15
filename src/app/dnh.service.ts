@@ -17,6 +17,20 @@ export class DNHService {
   BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
   url: string = '';
 
+
+  // the backend takes in a string for the user id
+  // the backend checks if the user already exists
+  // If the user exists return ok()
+  // else create new user with id
+  // create faviorte list for new user
+
+  userSignIn(id: any){
+    this.http.post(
+      this.BaseURL+"User/",
+      id
+    )
+  }
+
   getDogAPI(id: any){
   const headers= new HttpHeaders()
   .set('content-type', 'application/json')
