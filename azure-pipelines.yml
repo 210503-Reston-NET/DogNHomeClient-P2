@@ -19,6 +19,7 @@ steps:
   displayName: 'Install latest Angular CLI'  
   inputs:  
     command: custom  
+    workingDir: ./
     verbose: false  
     customCommand: 'install @angular/cli@latest'  
 - task: Npm@1  
