@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {LoggedInGuard} from 'ngx-auth-firebaseui';
 
 import { HomeComponent } from './home/home.component';
 import { UserPageComponent } from './user-page/user-page.component';
@@ -13,17 +14,41 @@ import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "User", component: UserPageComponent},
-  {path: "DogDetails/:id", component: DogDetailsComponent},
-  {path: "List/:id", component: DogListComponent},
-  {path: "Survey", component: SurveyComponent},
+  {
+    path: "", 
+    component: HomeComponent,
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: "User", 
+    component: UserPageComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: "DogDetails/:id", 
+    component: DogDetailsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: "List/:id", 
+    component: DogListComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: "Survey", 
+    component: SurveyComponent,
+    canActivate: [LoggedInGuard]
+  },
   {path: "Login", component: LoginComponent},
-  { path: "*", component: LoginComponent },
   { path: "Forum", component: ForumComponent },
   { path: "addForum", component: AddForumComponent },
   { path: "Post", component: GetpostsComponent },
   { path: "addPost", component: AddpostsComponent},
+  {
+    path: "*", 
+    component: HomeComponent,
+    canActivate: [LoggedInGuard],
+  }
 ];
 
 @NgModule({

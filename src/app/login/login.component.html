@@ -3,6 +3,8 @@
         <div class=" lg-col-2 justify-content-center">
         </div>
         <ngx-auth-firebaseui
+            [guestEnabled]="false"
+            [providers]="[providers.Google, providers.Facebook, providers.Twitter]"
             (onSuccess)="printUser($event)"
         ></ngx-auth-firebaseui>
         <div class="lg-col-2"></div>

@@ -14,7 +14,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatRadioModule } from '@angular/material/radio';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 
@@ -28,6 +33,8 @@ import { SurveyComponent } from './survey/survey.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchFilterComponent } from './home/search-filter/search-filter.component';
+import { HomeMainComponent } from './home/home-main/home-main.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
@@ -43,10 +50,12 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     SurveyComponent,
     LoginComponent,
     NavbarComponent,
+    SearchFilterComponent,
+    HomeMainComponent,
     ForumComponent,
     AddForumComponent,
     GetpostsComponent,
-    AddpostsComponent
+    AddpostsComponent,
     
   ],
   imports: [
@@ -57,7 +66,14 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     BrowserAnimationsModule,
     AngularFireAuthModule,
     FlexLayoutModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(
+      environment.firebase,
+      () => 'DogNHome',
+      {
+      enableFirestoreSync: true,
+      authGuardFallbackURL: '/Login',
+      authGuardLoggedInURL: '/Home'
+    }),
     NgbModule,
     MatCardModule,
     MatGridListModule,
@@ -65,7 +81,12 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatListModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
