@@ -13,6 +13,7 @@ export class GetpostsComponent implements OnInit {
 
   posts: Post[] = [];
   dogs: any;
+  forumID: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +28,9 @@ export class GetpostsComponent implements OnInit {
           result => {
             this.posts = result;
           }
-        )
+        );
+        alert(params.forumId)
+        this.forumID = params.forumId;
       }
     )
 
@@ -48,11 +51,7 @@ export class GetpostsComponent implements OnInit {
     });
   }
 
-  AddForum(): void {
-    this.router.navigate(['addForum']);
-  }
-
-  GoToPosts(forumID: number) {
-    this.router.navigate(['Post'], { queryParams: { forumId: forumID } });
+  AddPost(): void {
+    this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
   }
 }

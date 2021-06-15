@@ -56,8 +56,12 @@ export class DNHService {
   //Posts
   GetPosts(forumID: number): Promise<Post[]> {
     this.url = this.BaseURL + 'Post/' + forumID;
-    alert(this.url);
     return this.http.get<Post[]>(this.url).toPromise();
+  }
+  AddPost(postToAdd: Post): void {
+    this.url = this.BaseURL + 'Post';
+    alert(this.url);
+    this.http.post<Post>(this.url, postToAdd);
   }
   AddDogList(newDogList: doglist) : Promise<doglist>
   {
