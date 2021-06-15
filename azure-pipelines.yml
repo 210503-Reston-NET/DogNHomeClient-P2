@@ -33,11 +33,13 @@ steps:
     verbose: false  
     customCommand: 'run build --prod'  
   
-- task: AzureRmWebAppDeployment@4
-  displayName: Connet App Services
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
-    appType: 'webApp'
-    WebAppName: 'DogNHomeClient'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
+        appType: 'webApp'
+        appName: 'DogNHomeClient'
+        deployToSlotOrASE: true
+        resourceGroupName: 'Collection-P2'
+        slotName: 'production'
+        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        deploymentMethod: 'auto'
