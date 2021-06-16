@@ -1,17 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DNHService } from '../dnh.service'
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, NgModel} from '@angular/forms';
-import { stringify } from '@angular/compiler/src/util';
 import { PetFinderService } from '../pet-finder.service'
 import {doglist} from 'src/app/survey/DogList'
 import {listeddog} from 'src/app/survey/ListedDog'
-
-import { DogDetailsComponent } from '../dog-details/dog-details.component';
-import { DogListComponent } from '../dog-list/dog-list.component';
-import { FirebaseApp } from '@angular/fire';
-import * as firebase from "firebase";
-
 
 @Component({
   selector: 'app-survey',
@@ -27,10 +19,6 @@ export class SurveyComponent implements OnInit {
   dogtolist: listeddog ={
     dogid: '', 
     id: 0,
-    
-    
-    
-    //change to dogIdArr 
   }
   
   public color: string = "primary";
@@ -70,7 +58,7 @@ export class SurveyComponent implements OnInit {
  
   
 
-  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router  ) {//, private createdogs: DogListComponent
+  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router  ) {
 
  
   
@@ -78,9 +66,6 @@ export class SurveyComponent implements OnInit {
 }
 
 
-  disLabel(val: number){
-    return val
-  }
   
   onSubmit(): void {
     
@@ -96,7 +81,7 @@ getToken(){
     this.petFinder.SetToken(token)
     console.log("token set")
     this.getDogs()
-    //this.getTest()
+
   })
 }
 
@@ -120,22 +105,13 @@ ngOnInit(): void {
   
   GoToHome()
   {
-   // this.ngOnInit();
-    this.GetTime(); 
     this.AddTheSurveyList(); 
     
-    //this.filterDogs()
+    
     this.router.navigate(["List/:id"])
-    //this.createdogs.getTheSurveyDogs(this.dogIdArr)
-
   }
 
-  GetTime():void{
-
-    var Date = this.surveyList.created.getFullYear()+'-'+(this.surveyList.created.getMonth()+1)+'-'+this.surveyList.created.getDate();
-    var time = this.surveyList.created.getHours() + ":" + this.surveyList.created.getMinutes() + ":" + this.surveyList.created.getSeconds();
-    //this.surveyList.created = Date +' '+time;
-  }
+  
   AddTheSurveyList(): void {
   
     this.dnhService.AddDogList(this.surveyList).then( result =>
