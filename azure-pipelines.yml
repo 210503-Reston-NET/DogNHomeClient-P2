@@ -38,7 +38,7 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
-    archiveType: 7z
+    archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
     replaceExistingArchive: true
     verbose: true
