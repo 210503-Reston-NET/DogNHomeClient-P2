@@ -6,8 +6,11 @@ import { stringify } from '@angular/compiler/src/util';
 import { PetFinderService } from '../pet-finder.service'
 import {doglist} from 'src/app/survey/DogList'
 import {listeddog} from 'src/app/survey/ListedDog'
-import { DogDetailsComponent } from '../dog-details/dog-details.component';
 
+import { DogDetailsComponent } from '../dog-details/dog-details.component';
+import { DogListComponent } from '../dog-list/dog-list.component';
+import { FirebaseApp } from '@angular/fire';
+import * as firebase from "firebase";
 
 
 @Component({
@@ -17,23 +20,32 @@ import { DogDetailsComponent } from '../dog-details/dog-details.component';
 })
 export class SurveyComponent implements OnInit {
  
+  public dogsArr:any
+  public dogIdArr:any = []
+  public dogsss: string = ''
+  public doggies: any = []
   dogtolist: listeddog ={
+    dogid: '', 
     id: 0,
-    dogid: 0,
+    
+    
+    
+    //change to dogIdArr 
   }
   
-  
+  public color: string = "primary";
+
   surveyList: doglist = {
     id: 0,
     title: 'Surveyed List',
-    created: new Date(10/11/15),
+    created: new Date(),
     username:'Cesar_19',
   }
   
 
 
 
-  public dogs: any;
+  
   size!: string;
   sizes: string [] = ['small', 'medium', 'large', 'xlarge']; 
 
@@ -47,89 +59,138 @@ export class SurveyComponent implements OnInit {
   mixes: string [] = ['true', 'false']; 
 
   gender!: string;
-  genders: string [] = ['male', 'female']; 
+  genders: string [] = ['Male', 'Female']; 
 
   house_trained!: string;
   house_traineds: string[] = ['true', 'false']; 
 
   age!: string;
-  ages: string [] = ['young', 'old'];  
-  
+  ages: string [] = ['baby','young', 'adult', 'senior'];  
+  public cats = false;
+ 
   
 
-  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router) {
+  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router  ) {//, private createdogs: DogListComponent
 
  
   
  
 }
+
+
+  disLabel(val: number){
+    return val
+  }
   
   onSubmit(): void {
     
     this.GoToHome();
     
   }
+ 
+  
+
+
+getToken(){ 
+  this.petFinder.GetToken().subscribe(token => {
+    this.petFinder.SetToken(token)
+    console.log("token set")
+    this.getDogs()
+    //this.getTest()
+  })
+}
+
+getDogs(){
+  this.petFinder.GetDogs().subscribe(dogs => {
+    console.log(dogs)
+    this.dogsArr = dogs;
+  });
+}
+
+getDogAPI(){
+  this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
+}
+ngOnInit(): void {
+  //this.getToken()
+   //this.getDogs()
+   //this.getDogAPI()
+}
+
+  
+  
   GoToHome()
   {
-    
    // this.ngOnInit();
-    this.AddTheSurveyList();
+    this.GetTime(); 
+    this.AddTheSurveyList(); 
     
-  }
-  getToken(){
-    this.petFinder.GetToken().subscribe(token => {
-      this.petFinder.SetToken(token)
-      console.log("token set")
-      this.getDogs()
-    })
-  }
-
-  getDogs(){
-    this.petFinder.GetDogs().subscribe(dogs => {
-      console.log(dogs)
-      this.dogs = dogs;
-      this.Adding(this.dogs);
-    });
-  }
-
-  getDogAPI(){
-    this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  }
-
-
-  ngOnInit(): void {
-    this.getToken()
-    // this.getDogs()
-    this.getDogAPI()
+    //this.filterDogs()
+    this.router.navigate(["List/:id"])
+    //this.createdogs.getTheSurveyDogs(this.dogIdArr)
 
   }
 
-  Adding(dogs: any)
-  {
-    this.AddSurveyList(this.dogs,this.size, this.children, this.spray_neutered, this.mixed, this.house_trained, this.age, this.gender)
+  GetTime():void{
+
+    var Date = this.surveyList.created.getFullYear()+'-'+(this.surveyList.created.getMonth()+1)+'-'+this.surveyList.created.getDate();
+    var time = this.surveyList.created.getHours() + ":" + this.surveyList.created.getMinutes() + ":" + this.surveyList.created.getSeconds();
+    //this.surveyList.created = Date +' '+time;
   }
+  AddTheSurveyList(): void {
   
-  AddSurveyList(dogs: any,size: string, children: string, spray_neutered: string, mixed: string, house_trained: string, age: string, gender: string): void{
-
-    if(dogs.age == age && dogs.gender == gender && dogs.breeds.mixed == mixed && dogs.enviroment.children == children && dogs.attributes.spray_neutered == spray_neutered && dogs.attributes.house_trained == house_trained)
-    {
-      this.AddToSurveyList(dogs)
+    this.dnhService.AddDogList(this.surveyList).then( result =>
+        {
+          console.log(result) 
+            
+          this.filterDogs(result)
+          this.router.navigate(["List/:id"])
+        }
+    ).catch(err => console.log(err));
     }
 
-  }
-  AddToSurveyList(dogs: any):void {
-    this.dogtolist.dogid == dogs.id;
-    
-  }
-  AddTheS
-  
-  
-        this.router.navigate(["List/:id"]);
+  filterDogs(ids: any){
+    console.log("filteringToAddList")
+    let request = "https://api.petfinder.com/v2/animals?type=dog&size=" + this.size+
+    "&good_with_children=" + this.children +
+    "&house_trained=" + this.house_trained +
+    "&gender=" + this.gender +
+    "&age=" + this.age +
+    "&spray_neutered=" + this.spray_neutered + 
+    "&mixed="+ this.mixed
+
+    console.log(request)
+      this.petFinder.GetDogsFiltered(request).subscribe(dogs => {
+        //console.log(dogs)
+        this.dogsArr = dogs
+        //console.log(this.dogsArr)
+        this.dogsArr.animals.forEach((dogss:any) => {
+          //console.log(dogss.id)
+          this.dogIdArr.push(dogss.id)
+          this.dogsss = dogss.id.toString()
+          this.doggies.push(this.dogsss)
+          //this.dogtolist.id = ids
+          //console.log(ids)
+          console.log(this.dogtolist.dogid)
+          this.dogtolist.dogid = this.dogsss
+          this.dnhService.AddListedDog(this.dogtolist)
+        });
+        //console.log(this.doggies)
+        //this.dogtolist.dogid = this.doggies
+        console.log(this.dogtolist.dogid)
+        //this.dnhService.AddListedDog(this.dogtolist)
+        //this.dogIdArr = this.dogsArr.forEach((dogss:any) => this.dogIdArr.push(dogss.animals.id))
+        console.log("ABOUT TO GET DOGSARR");
+        //console.log(this.dogIdArr);
+        console.log("JUST GOT DOGSARR");
+        //console.log("Date = " + this.surveyList.created) 
         
-      }
-    ).catch(err => console.log(err));
-    
+        //this.dnhService.AddListedDog(this.dogtolist)
+          
+        });; //NEED TO CHANGE THIS
+      
+      
   }
+
 }
 
 
