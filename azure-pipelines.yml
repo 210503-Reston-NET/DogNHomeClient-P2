@@ -52,5 +52,5 @@ steps:
         deployToSlotOrASE: true
         resourceGroupName: 'Collection-P2'
         slotName: 'production'
-        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        package: $(Build.ArtifactStagingDirectory)/**/*.zip
         deploymentMethod: 'auto'
