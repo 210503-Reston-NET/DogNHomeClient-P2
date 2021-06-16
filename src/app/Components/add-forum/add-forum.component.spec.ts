@@ -48,7 +48,7 @@ describe('AddForumComponent', () => {
   });
 
   it('Should add forums to the list', () => {
-      service.AddForum(mockData).then
+      return service.AddForum(mockData).then
       ((results) => {expect(service.GetForums() == null)});
   })
 });
