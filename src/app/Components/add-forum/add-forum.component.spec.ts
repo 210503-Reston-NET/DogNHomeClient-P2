@@ -21,6 +21,7 @@ describe('AddForumComponent', () => {
   }
   class MockService {
     AddForum(){};
+    GetForums(){};
 
   }
 
