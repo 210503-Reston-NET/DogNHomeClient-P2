@@ -151,7 +151,7 @@ ngOnInit(): void {
           //console.log(ids)
           //console.log(this.dogtolist.dogid)
           this.dogtolist.dogid = this.dogsss
-          //console.log(this.dogtolist)
+          console.log('GIVE ME DOG TO LIST', this.dogtolist)
           this.dnhService.AddListedDog(this.dogtolist).then(
             (result:any) => console.log("adding to the DB", result)        
           );
