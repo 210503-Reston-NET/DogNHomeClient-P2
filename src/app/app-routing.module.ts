@@ -12,6 +12,8 @@ import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
+import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
+import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
 
 const routes: Routes = [
   {
@@ -30,7 +32,7 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
-    path: "List/:id", 
+    path: "List", 
     component: DogListComponent,
     canActivate: [LoggedInGuard]
   },
@@ -43,7 +45,9 @@ const routes: Routes = [
   { path: "Forum", component: ForumComponent },
   { path: "addForum", component: AddForumComponent },
   { path: "Post", component: GetpostsComponent },
-  { path: "addPost", component: AddpostsComponent},
+  { path: "addPost", component: AddpostsComponent },
+  { path: "Comment", component: GetcommentsComponent },
+  { path: "addComment", component: AddcommentsComponent },
   {
     path: "**", 
     component: HomeComponent,

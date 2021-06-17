@@ -1,6 +1,6 @@
 export interface Post {
   postID: number,
   topic: string,
-  userName: string,
+  userCreator: string,
   forumID: number
 }

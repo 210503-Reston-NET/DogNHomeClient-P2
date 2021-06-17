@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire';
+// import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { loadModules } from 'esri-loader';
-// import {} from 'google.maps'
 
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -40,7 +38,8 @@ import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
 import { MapComponent } from './Components/map/map.component';
-import { from } from 'rxjs';
+import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
+import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +56,8 @@ import { from } from 'rxjs';
     GetpostsComponent,
     AddpostsComponent,
     MapComponent,
+    GetcommentsComponent,
+    AddcommentsComponent,
     
   ],
   imports: [
@@ -88,7 +89,6 @@ import { from } from 'rxjs';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    // google
   ],
   providers: [],
   bootstrap: [AppComponent]

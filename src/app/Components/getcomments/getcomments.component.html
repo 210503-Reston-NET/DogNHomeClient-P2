@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<button class="btn" style="  background-color: #7BB8B2;" (click)="AddComments()">Start a new Comment!</button>
+<div class="row justify-content-start">
+  <div class="container col-8" *ngIf="comments.length > 0 else noComments">
+    <table class="table">
+      <thead>
+      <th class="user">User:</th>
+      <th class="comment">Comment:</th>
+      <tbody *ngFor="let comment of comments; let i = index">
+        <tr *ngIf="i%2 == 1" style="background-color: #f8f8f1;">
+          <td class="user">
+            <p>{{comment.userName}}</p>
+          </td>
+          <td class="comment">
+            <p>{{comment.message}}</p>
+          </td>
+        </tr>
+        <tr *ngIf="i%2 == 0">
+          <td class="user">
+            <p>{{comment.userName}}</p>
+          </td>
+          <td class="comment">
+            <p>{{comment.message}}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <ng-template #noComments>
+    <div class="col-8">
+      <h4>Congradulations! You are the first to start a Comment for this Post. Make it a good one.</h4>
+    </div>
+  </ng-template>
