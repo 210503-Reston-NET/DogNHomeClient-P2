@@ -4,6 +4,7 @@ import { DNHService } from '../../dnh.service';
 import { Forum } from '../../models/Forum';
 import { PetFinderService } from '../../pet-finder.service';
 import { MatIconModule } from '@angular/material/icon'
+import { Comments } from '../../models/Comments';
 
 @Component({
   selector: 'app-getcomments',
@@ -13,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon'
 export class GetcommentsComponent implements OnInit {
 
   dogs: any;
-  comments: any;
+  comments: Comments[] = [];
   postID: number = 0;
 
   constructor(
@@ -28,10 +29,11 @@ export class GetcommentsComponent implements OnInit {
       params => {
         this.service.GetAllComments(params.postID).then(
           result => {
-            this.comments = result;
+            this.comments = result
+            console.log(this.comments)
           }
-        );
-        this.postID = params.forumId;
+        ).catch(result => alert("Failed to getAllComments" + result));
+        this.postID = params.postID;
       }
     )
 
@@ -52,6 +54,10 @@ export class GetcommentsComponent implements OnInit {
       this.dogs = dogs;
 
     });
+  }
+
+  AddComments() {
+    this.router.navigate(['addComment'], { queryParams: { postID: this.postID } });
   }
 
 }

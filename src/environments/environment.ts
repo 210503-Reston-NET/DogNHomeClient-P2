@@ -11,7 +11,7 @@ export const environment = {
   },
   petFinderCeds: {
     grant_type: "client_credentials",
-    client_id: "uPVhhqS9BsIfUwejLjZVUhQkzXniBO7I8RZ41YUCwidgk71ZZa",
-    client_secret: "DoIXB7bl3o4D87yCDOw4mOGLh08TxPsSjLYZrgIe"
+    client_id: "b3o7vXWnIUkZdPcQ7kRuqckLtzelstytKnAkHk58fN1EwF8ftw",
+    client_secret: "3979opbthswAu8SVqahGNH4hCiQmflk82WFJCqNE"
   }
 }

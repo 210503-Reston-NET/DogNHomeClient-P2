@@ -13,6 +13,7 @@ import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
 import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
+import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: "Post", component: GetpostsComponent },
   { path: "addPost", component: AddpostsComponent },
   { path: "Comment", component: GetcommentsComponent },
+  { path: "addComment", component: AddcommentsComponent },
   {
     path: "*", 
     component: HomeComponent,

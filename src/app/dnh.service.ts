@@ -6,6 +6,7 @@ import { Forum } from './models/Forum';
 import { Post } from './models/Post';
 import {doglist} from '../app/survey/DogList';
 import { listeddog } from './survey/ListedDog';
+import { Comments } from './models/Comments';
 @Injectable({
   providedIn: 'root'
 })
@@ -62,6 +63,10 @@ export class DNHService {
     this.url = this.BaseURL + 'Post/';
     return this.http.post<Post>(this.url, postToAdd).toPromise();
   }
+  GetPost(postID: number): Promise<Post> {
+    this.url = this.BaseURL + "Comment/" + postID;
+    return this.http.get<Post>(this.url).toPromise();
+  }
   //DogList
   AddDogList(newDogList: doglist) : Promise<doglist>
   {
@@ -75,9 +80,15 @@ export class DNHService {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
   //Comments
-  GetAllComments(postID: number): Promise<Comment[]>
+  GetAllComments(postID: number): Promise<Comments[]>
   {
     this.url = this.BaseURL + "Comment/" + postID;
-    return this.http.get<Comment[]>(this.url).toPromise();
+    return this.http.get<Comments[]>(this.url).toPromise();
   }
+  AddComments(newComment: Comments): Promise<Comments>
+  {
+    this.url = this.BaseURL + "Comment"
+    return this.http.post<Comments>(this.url, newComment).toPromise();
+  }
+ 
 }
