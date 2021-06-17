@@ -150,7 +150,7 @@ ngOnInit(): void {
           //this.dogtolist.id = ids
           //console.log(ids)
           //console.log(this.dogtolist.dogid)
-          
+           
         });
 
         this.dogtolist.dogs = this.doggies
