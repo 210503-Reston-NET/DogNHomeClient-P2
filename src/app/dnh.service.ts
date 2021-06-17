@@ -19,7 +19,8 @@ export class DNHService {
   BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
   url: string = '';
 
-   // the backend takes in a string for the user id
+
+  // the backend takes in a string for the user id
   // the backend checks if the user already exists
   // If the user exists return ok()
   // else create new user with id
@@ -57,8 +58,12 @@ export class DNHService {
   //Posts
   GetPosts(forumID: number): Promise<Post[]> {
     this.url = this.BaseURL + 'Post/' + forumID;
-    alert(this.url);
     return this.http.get<Post[]>(this.url).toPromise();
+  }
+  AddPost(postToAdd: Post): void {
+    this.url = this.BaseURL + 'Post';
+    alert(this.url);
+    this.http.post<Post>(this.url, postToAdd);
   }
   AddDogList(newDogList: doglist) : Promise<doglist>
   {
@@ -79,6 +84,9 @@ export class DNHService {
   GetAllListedDogs(): Promise<listeddog>
   {
     return this.http.get<listeddog>(this.baseURLLD).toPromise();
+  }
+  GetAllDogList(): Promise<doglist> {
+    return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
  
   // this.http.get<[]>(

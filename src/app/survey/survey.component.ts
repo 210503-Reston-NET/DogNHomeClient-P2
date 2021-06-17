@@ -119,6 +119,7 @@ ngOnInit(): void {
     console.log("LEAVING SURVEY2:", this.myInt)
     
   }
+<<<<<<< HEAD
 
   
   
@@ -177,6 +178,13 @@ ngOnInit(): void {
         });; //NEED TO CHANGE THIS
       
       
+=======
+  AddTheSurveyList(): void {
+  
+  this.dnhService.AddDogList(this.surveyList).then( result =>
+        this.router.navigate(["List/:id"])
+  ).catch(err => console.log(err));
+>>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
   }
 
   AddTheSurveyList(): void {

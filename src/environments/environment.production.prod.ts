@@ -1,11 +1,7 @@
 
 export const environment = {
-<<<<<<< HEAD
-    production: false,
-firebase: {
-=======
+  production: true,
   firebase: {
->>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
     apiKey: "AIzaSyAKJhvm4YPHfKf1XOQeJhm15EfNPPweUcQ",
     authDomain: "dognhome-2eaaa.firebaseapp.com",
     databaseURL: "dognhome-2eaaa",
@@ -19,8 +15,4 @@ firebase: {
     client_id: "uPVhhqS9BsIfUwejLjZVUhQkzXniBO7I8RZ41YUCwidgk71ZZa",
     client_secret: "DoIXB7bl3o4D87yCDOw4mOGLh08TxPsSjLYZrgIe"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5

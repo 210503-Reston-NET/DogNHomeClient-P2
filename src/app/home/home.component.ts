@@ -128,7 +128,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getToken()
+<<<<<<< HEAD
      this.getDogs()
+=======
+    // this.getDogs()
+>>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
     // this.getTest()
     this.printUser2()
   }

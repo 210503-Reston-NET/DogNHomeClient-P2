@@ -92,32 +92,11 @@ export class DogListComponent implements OnInit {
     this.dnhService.GetListedDogByID(id).then(result => {
       console.log("This is the ID I inserted", id)
       console.log("MY RESULTS", result)
-      //this.dogIdArr.push(result.map(({dogs}) => dogs)).toString()
-      //console.log("DOGSARRRS",this.dogIdArr)
       result.forEach(results => { 
         console.log("MY INDIVIDUAL RESULTS:", results)
         this.dogAPI = parseInt(results)
         this.doggos.push(this.dogAPI)
-
-        //MOCK TESTING MY CODE
-        //this.dogAPI = parseInt('51990812')
         console.log ("Testing this out", this.dogAPI)
-        //this.doggos.push(this.dogAPI)
-
-
-        //console.log("SENT IN ID1:", results.dogs)
-        //this.dogtolist = results
-        
-        //console.log("DOGTOLIST", this.dogtolist)
-        //console.log(this.dogtolist.dogs)
-        
-       // console.log("SENT IN ID0:", results.id)
-        //this.dogtolist.dogs = results.dogs
-        //console.log("DOGTOLIST?",this.dogtolist)
-        
-        //console.log("SENT IN ID", parseInt(results.dogs))
-        //console.log("API ID", this.dogAPI)
-        
       })
       console.log("MY DOGGOS LOG1", this.doggos)
       this.getDogsById(this.doggos)  
@@ -129,18 +108,7 @@ export class DogListComponent implements OnInit {
     
     
     
-    /*
-    this.doggos.array.forEach((dogss:any)=> {
-      console.log(dogss)
-      this.dogIdArr.push(dogss)
-    });
-    console.log(this.dogIdArr)
-    this.dogIdArr.array.forEach((dogsss:any)=> {
 
-        this.petFinder.GetDog(dogsss).subscribe((dogssss:any)=>
-          {console.log(dogssss)
-          this.dogIdArr= dogssss});
-    });*/
   }
 
 
