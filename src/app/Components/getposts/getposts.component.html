@@ -1,17 +1,26 @@
 <app-navbar></app-navbar>
-<button class="btn-primary" (click)="AddPost()">Start a new Post!</button>
+
+<button class="btn-primary" style="  background-color: #7BB8B2;" (click)="AddPost()">Start a new Post!</button>
 <div class="row justify-content-start">
   <div class="container col-8" *ngIf="posts.length > 0 else noPosts">
     <table class="table">
       <thead>
       <th>Posts</th>
       </thead>
-      <tbody *ngFor="let post of posts">
-        <tr>
+      <tbody *ngFor="let post of posts; let i = index">
+        <tr *ngIf="i%2 == 1" style="    background-color: #f8f8f1;">
           <td>
             <div>
-              <i class="fa fa-newspaper-o" aria-hidden="true"> {{post.topic}}</i>
-              <span> - <p>{{post.userName}}</p></span>
+              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID)"> {{post.topic}}</i>
+              <span> - <p>{{post.userCreator}}</p></span>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="i%2 == 0">
+          <td>
+            <div>
+              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID)"> {{post.topic}}</i>
+              <span> - <p>{{post.userCreator}}</p></span>
             </div>
           </td>
         </tr>

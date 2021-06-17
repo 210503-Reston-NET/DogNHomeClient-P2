@@ -1,17 +1,23 @@
 <app-navbar></app-navbar>
 <div class="container transparent">
-  <button class="btn-primary" (click)="AddForum()">Start a new forum!</button>
+  <button class="btn-primary" style="  background-color: #7BB8B2;" (click)="AddForum()">Start a new forum!</button>
   <div class="row justify-content-start">
     <div class="container col-8" *ngIf="forums.length > 0 else noForums">
       <table class="table">
         <thead>
         <th>Forums</th>
         </thead>
-        <tbody *ngFor="let forum of forums">
-          <tr >
-            <td>
+        <tbody *ngFor="let forum of forums; let i = index">
+          <tr>
+            <td *ngIf="i%2 == 1" style="    background-color: #f8f8f1;">
               <div>
-                  <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToPosts(forum.forumID)">   {{forum.topic}}</i>
+                <i class="odd fa fa-newspaper-o" aria-hidden="true" (click)="GoToPosts(forum.forumID)">   {{forum.topic}}</i>
+                <span> - {{forum.description}}</span>
+              </div>
+            </td>
+            <td *ngIf="i%2 == 0">
+              <div>
+                <i class="odd fa fa-newspaper-o" aria-hidden="true" (click)="GoToPosts(forum.forumID)">   {{forum.topic}}</i>
                 <span> - {{forum.description}}</span>
               </div>
             </td>
@@ -26,7 +32,7 @@
       </div>
     </ng-template>
 
-    <div class="col-4">
+    <div class="col-4" *ngIf="dogs">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Adopt {{dogs.animals[0].name}}!</mat-card-title>

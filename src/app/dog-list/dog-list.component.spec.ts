@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PetFinderService } from '../pet-finder.service'
+import { DNHService } from '../dnh.service';
+import {HttpTestingController, HttpClientTestingModule} from "@angular/common/http/testing";
 import { DogListComponent } from './dog-list.component';
 
 describe('DogListComponent', () => {
@@ -8,7 +10,9 @@ describe('DogListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DogListComponent ]
+      declarations: [ DogListComponent ],
+      imports: [HttpClientTestingModule],
+      providers:[DNHService,PetFinderService]
     })
     .compileComponents();
   });

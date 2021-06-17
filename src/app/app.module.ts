@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire';
+// import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
@@ -33,12 +33,13 @@ import { SurveyComponent } from './survey/survey.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SearchFilterComponent } from './home/search-filter/search-filter.component';
-import { HomeMainComponent } from './home/home-main/home-main.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
+import { MapComponent } from './Components/map/map.component';
+import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
+import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +51,13 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     SurveyComponent,
     LoginComponent,
     NavbarComponent,
-    SearchFilterComponent,
-    HomeMainComponent,
     ForumComponent,
     AddForumComponent,
     GetpostsComponent,
     AddpostsComponent,
+    MapComponent,
+    GetcommentsComponent,
+    AddcommentsComponent,
     
   ],
   imports: [

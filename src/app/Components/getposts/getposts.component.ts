@@ -22,6 +22,7 @@ export class GetpostsComponent implements OnInit {
     private petFinder: PetFinderService) { }
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(
       params => {
         this.service.GetPosts(params.forumId).then(
@@ -29,7 +30,6 @@ export class GetpostsComponent implements OnInit {
             this.posts = result;
           }
         );
-        alert(params.forumId)
         this.forumID = params.forumId;
       }
     )
@@ -51,7 +51,18 @@ export class GetpostsComponent implements OnInit {
     });
   }
 
+  AddForum(): void {
+    this.router.navigate(['addForum']);
+  }
+
+  GoToPosts(forumID: number) {
+    this.router.navigate(['Post'], { queryParams: { forumId: forumID } });
+  }
   AddPost(): void {
     this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
+  }
+
+  GoToComments(postID: number): void {
+    this.router.navigate(['Comment'], { queryParams: { postID: postID } });
   }
 }

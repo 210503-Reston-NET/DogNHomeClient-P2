@@ -39,7 +39,6 @@ export class ForumComponent implements OnInit {
     this.petFinder.GetDogs().subscribe(dogs => {
       console.log(dogs)
       this.dogs = dogs;
-
     });
   }
 

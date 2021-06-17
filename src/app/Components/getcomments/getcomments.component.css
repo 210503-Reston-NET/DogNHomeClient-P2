@@ -1,0 +1,14 @@
+#comment {
+    width: 90%;
+}
+#user {
+  width: 10px;
+  border-right: 1px solid #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th {
+  background-color: #607D8A;
+  color: white;
+}

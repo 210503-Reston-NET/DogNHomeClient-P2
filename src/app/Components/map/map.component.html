@@ -1,0 +1,133 @@
+
+
+<!-- <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css"> -->
+<!-- <script src="https://js.arcgis.com/4.19/"></script> -->
+<!-- 
+<script>
+    require(["esri/config","esri/Map", "esri/views/MapView"], function (esriConfig,Map, MapView) {
+        esriConfig.apiKey = "AAPKc710c5e5c7e84e06875624c30c0e4cf1C6NcxHo5lJsJqHggP4IyBFhMSt0beGQomI0VIvJTIzT1wKhnA2wBTPYG9Y2tb1yU";
+
+        const map = new Map({
+          basemap: "arcgis-topographic" // Basemap layer service
+        });
+        const view = new MapView({
+          map: map,
+          center: [-118.805, 34.027], // Longitude, latitude
+          zoom: 13, // Zoom level
+          container: "viewDiv" // Div element
+        });
+    });
+  </script>
+  <div id="viewDiv"></div> -->
+<!-- 
+<script>
+        require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/Graphic",
+        "esri/layers/GraphicsLayer",
+        "esri/tasks/RouteTask",
+        "esri/tasks/support/RouteParameters",
+        "esri/tasks/support/FeatureSet"
+      ], function(Map, MapView, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet) {
+
+        // Point the URL to a valid routing service
+        var routeTask = new RouteTask({
+          url: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
+        });
+
+        // The stops and route result will be stored in this layer
+        var routeLayer = new GraphicsLayer();
+
+        // Setup the route parameters
+        var routeParams = new RouteParameters({
+          // An authorization string used to access the routing service
+          apiKey: "AAPKc710c5e5c7e84e06875624c30c0e4cf1C6NcxHo5lJsJqHggP4IyBFhMSt0beGQomI0VIvJTIzT1wKhnA2wBTPYG9Y2tb1yU",
+          stops: new FeatureSet(),
+          outSpatialReference: {
+            // autocasts as new SpatialReference()
+            wkid: 3857
+          }
+        });
+
+        // Define the symbology used to display the stops
+        var stopSymbol = {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          style: "cross",
+          size: 15,
+          outline: {
+            // autocasts as new SimpleLineSymbol()
+            width: 4
+          }
+        };
+
+        // Define the symbology used to display the route
+        var routeSymbol = {
+          type: "simple-line", // autocasts as SimpleLineSymbol()
+          color: [0, 0, 255, 0.5],
+          width: 5
+        };
+
+        var map = new Map({
+          basemap: "streets-navigation-vector",
+          layers: [routeLayer] // Add the route layer to the map
+        });
+
+        var view = new MapView({
+          container: "mapView", // Reference to the scene div created in step 5
+          map: map, // Reference to the map object created before the scene
+          center: [-117.195, 34.057],
+          zoom: 13
+        });
+
+        // Adds a graphic when the user clicks the map. If 2 or more points exist, route is solved.
+        view.on("click", addStop);
+
+        function addStop(event) {
+          // Add a point at the location of the map click
+          var stop = new Graphic({
+            geometry: event.mapPoint,
+            symbol: stopSymbol
+          });
+          routeLayer.add(stop);
+
+          // Execute the route task if 2 or more stops are input
+          routeParams.stops.features.push(stop);
+          if (routeParams.stops.features.length >= 2) {
+            routeTask.solve(routeParams).then(showRoute);
+          }
+        }
+        // Adds the solved route to the map as a graphic
+        function showRoute(data) {
+          var routeResult = data.routeResults[0].route;
+          routeResult.symbol = routeSymbol;
+          routeLayer.add(routeResult);
+        }
+      });
+</script> -->
+
+<!-- 
+<script async
+src="https://maps.googleapis.com/maps/api/js?key="
+async>
+</script>
+<script>
+  let map;
+  console.log("js running");
+
+  function initMap() {
+    console.log("js running");
+
+    map = new google.maps.Map(document.getElementById("mapView"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+  }
+  initMap()
+</script> -->
+<div #mapViewNode id="map"></div>
+
+
+
+
+

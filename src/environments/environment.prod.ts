@@ -1,4 +1,3 @@
-
 export const environment = {
   production: true,
   firebase: {
@@ -8,11 +7,11 @@ export const environment = {
     projectId: "dognhome-2eaaa.appspot.com",
     storageBucket: "dognhome-2eaaa.appspot.com",
     messagingSenderId: "422565600673",
-    appId: "1:422565600673:web:ce414322bc7bccc8a23fe0"
+    appId: "1:422565600673:web:ce414322bc7bccc8a23fe0",
   },
   petFinderCeds: {
     grant_type: "client_credentials",
-    client_id: "uPVhhqS9BsIfUwejLjZVUhQkzXniBO7I8RZ41YUCwidgk71ZZa",
-    client_secret: "DoIXB7bl3o4D87yCDOw4mOGLh08TxPsSjLYZrgIe"
+    client_id: "b3o7vXWnIUkZdPcQ7kRuqckLtzelstytKnAkHk58fN1EwF8ftw",
+    client_secret: "3979opbthswAu8SVqahGNH4hCiQmflk82WFJCqNE"
   }
-}
+};
