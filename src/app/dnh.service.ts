@@ -69,8 +69,8 @@ export class DNHService {
     console.log("ENTER")              //'https://dognhome.azurewebsites.net/api/DogList/50'
     return this.http.post<listeddog>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
   }
-  GetListedDogByID(id:any): Promise<listeddog[]> {
-    return this.http.get<listeddog[]>(this.BaseURL + "ListedDog/" + id).toPromise();
+  GetListedDogByID(id:any): Promise<[]> {
+    return this.http.get<[]>(this.BaseURL + "ListedDog/" + id).toPromise();
   }
   AddLikes(newLikes: likes ) : Promise<likes>
   {

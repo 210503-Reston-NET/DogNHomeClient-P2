@@ -96,13 +96,13 @@ export class DogListComponent implements OnInit {
       //console.log("DOGSARRRS",this.dogIdArr)
       result.forEach(results => { 
         console.log("MY INDIVIDUAL RESULTS:", results)
-        //this.dogAPI = parseInt(results)
-        //this.doggos.push(this.dogAPI)
+        this.dogAPI = parseInt(results)
+        this.doggos.push(this.dogAPI)
 
         //MOCK TESTING MY CODE
-        this.dogAPI = parseInt('51990812')
+        //this.dogAPI = parseInt('51990812')
         console.log ("Testing this out", this.dogAPI)
-        this.doggos.push(this.dogAPI)
+        //this.doggos.push(this.dogAPI)
 
 
         //console.log("SENT IN ID1:", results.dogs)
