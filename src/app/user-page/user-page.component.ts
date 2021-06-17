@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { DNHService } from '../dnh.service';
 import { PetFinderService } from '../pet-finder.service';
-import { Location, getLocaleDirection } from '@angular/common'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-user-page',
@@ -32,14 +32,13 @@ export class UserPageComponent implements OnInit {
       +"20"
       ).subscribe(dogs => {
       this.dogsArr = dogs
-      console.log(this.dogsArr)
     })
   }
 
   deleteAlert(xalert: any){
 
     this.dnhService.removeAlert(xalert).subscribe(res => {
-      // this.router.navigate(['User'])
+
       this.newAlertsArr.filter((x: any) => {
         return x.alertID !== xalert.alertID
       })  
@@ -51,14 +50,10 @@ export class UserPageComponent implements OnInit {
 
   seenNewDogs(xalert: any){
     this.petFinder.GetDogsFiltered(xalert.alertValue).subscribe((res: any) => {
-      console.log("the old id", xalert.dogID)
-      console.log("the new id", res.animals[0].id)
-      xalert.dogID = res.animals[0].id
-      console.log("trying to change the xalert", xalert.dogID)
 
-      this.dnhService.seenAlertedDogs(xalert).subscribe(res => {
-        console.log(res)
-      })
+      xalert.dogID = res.animals[0].id
+
+      this.dnhService.seenAlertedDogs(xalert)
     })
 
   }
@@ -72,11 +67,11 @@ export class UserPageComponent implements OnInit {
   checkAlerts(userId: any){
 
     this.dnhService.getAlerts(userId).subscribe((res: any) => {
-      console.log(res)
+
       this.totalAlerts = res.length
-      console.log(this.totalAlerts)
+
       res.forEach((x: any) => {
-        console.log("the old dog", x.dogID, x.alertType)
+
         this.checkForNewDog(x)
       })
       
@@ -110,7 +105,6 @@ export class UserPageComponent implements OnInit {
     this.router.navigate(['Login'])
   }
   goBack(){
-    console.log("going back")
     this.location.back()
   }
   ngOnInit(): void {

@@ -102,9 +102,9 @@ export class HomeComponent implements OnInit {
     }
 
     checkAlerts(userId: any){
-      console.log(userId)
+
       this.dnhService.getAlerts(userId).subscribe((res: any) => {
-        console.log(res)
+
         res.forEach((x: any) => {
           this.checkForNewDog(x.dogID, x.alertValue, x.alertType)
         })
@@ -155,7 +155,6 @@ export class HomeComponent implements OnInit {
 
       this.petFinder.GetDogsFiltered(request).subscribe(dogs => {
         this.dogsArr = dogs
-        console.log(this.dogsArr)
       })
     }
 
@@ -171,13 +170,6 @@ export class HomeComponent implements OnInit {
         this.getUserIdForAlertCheck()
       })
     }
-
-    // console.log("home page is loading")
-    // this.petFinder.GetToken().subscribe(token => {
-    //   this.petFinder.SetToken(token)
-    //   this.getDogs()
-    //   this.getUserIdForAlertCheck()
-    // })
   }
 
   getDogs(){

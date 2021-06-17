@@ -31,20 +31,6 @@ export class DNHService {
     )
   }
 
-  // getDogAPI(id: any){
-  // const headers= new HttpHeaders()
-  // .set('content-type', 'application/json')
-  // .set('Access-Control-Allow-Origin', '*');
-
-  //   return this.http.get(
-  //     "https://dognhome.azurewebsites.net/api/Dog/",
-  //     {
-  //       headers:
-  //         headers
-  //     }
-  //   )
-  // }
-
   GetForums(): Promise<Forum[]> {
     this.url = this.BaseURL + 'Forum/';
     return this.http.get<Forum[]>(this.url).toPromise();
@@ -96,13 +82,10 @@ export class DNHService {
   }
 
   seenAlertedDogs(xalert: any){
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: xalert
-    };
 
     return this.http.put(
       this.BaseURL+"Alert/",
-      httpOptions
+      xalert
     )
 
   }
