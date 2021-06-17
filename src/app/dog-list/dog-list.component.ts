@@ -33,12 +33,12 @@ export class DogListComponent implements OnInit {
   getDogsById(doggos1:any) {
     console.log("MY TESTING LIST INSIDE DOGGOS1", doggos1)
     doggos1.forEach((ints:any) => {
-      this.petFinder.GetDog(ints).subscribe(data =>{ console.log(data)
-        this.dogIdArr = data;
+      this.petFinder.GetDog(ints).subscribe(data =>{ //console.log(data)
+        this.dogIdArr.push(data);
     });
       
     });
-   // console.log("MY TESTING LIST", this.dogIdArr)
+    console.log("MY TESTING LIST BEFORE LEAVING GET DOGSBYID", this.dogIdArr)
   }
 
   getToken(){
@@ -66,7 +66,7 @@ export class DogListComponent implements OnInit {
 
       }
         )
-        console.log("MY TESTING LIST", this.dogIdArr)
+        console.log("MY TESTING LIST AFTER LEAVING GET DOGSBYID", this.dogIdArr)
 
 
 

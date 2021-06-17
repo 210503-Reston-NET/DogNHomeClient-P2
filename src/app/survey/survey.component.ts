@@ -5,7 +5,9 @@ import { PetFinderService } from '../pet-finder.service'
 import {doglist} from 'src/app/survey/DogList'
 import {listeddog} from 'src/app/survey/ListedDog'
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { loadTranslations } from '@angular/localize';
+
 
 @Component({
   selector: 'app-survey',
@@ -60,7 +62,7 @@ export class SurveyComponent implements OnInit {
  
   
 
-  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router, private route: ActivatedRoute  ) {
+  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router, private route: ActivatedRoute, private auth: AuthService  ) {
 
  
   
@@ -101,24 +103,29 @@ ngOnInit(): void {
   //this.getToken()
    //this.getDogs()
    //this.getDogAPI()
+   this.auth.getUser().subscribe((result:any) => {
+    if (result)
+      if (result.displayName) {
+        this.surveyList.username = result.displayName
+      }
+      else if (result.email) {
+        alert(result.email)
+        this.surveyList.username = result.email
+      }
+});
 }
+
 
   
   
   GoToHome():void
   {
     this.AddTheSurveyList(); 
-    console.log("LEAVING SURVEY1:", this.myInt)
-    this.DoglistPage();
     
     
-  }
-  DoglistPage(): void
-  {
-
-    console.log("LEAVING SURVEY2:", this.myInt)
     
   }
+ 
 
   filterDogs(ids: any){
     console.log("filteringToAddList")
@@ -132,24 +139,13 @@ ngOnInit(): void {
 
     console.log(request)
       this.petFinder.GetDogsFiltered(request).subscribe(dogs => {
-        //console.log(dogs)
         this.dogsArr = dogs
-        //console.log(this.dogsArr)
         this.dogtolist.id = ids
         this.dogsArr.animals.forEach((dogss:any) => {
-          //console.log(dogss.id)
-          
-          this.dogIdArr.push(dogss.id)
-          this.dogsss = dogss.id.toString()
-          this.doggies.push(this.dogsss)
-          //this.dogtolist.id = ids
-          //console.log(ids)
-          //console.log(this.dogtolist.dogid)
-           
+          //console.log(dogss)
+          this.doggies.push(dogss.id.toString())
         });
-
         this.dogtolist.dogs = this.doggies
-          //console.log('GIVE ME DOG TO LIST', this.dogtolist)
           this.dnhService.AddListedDog(this.dogtolist).then(
             (result:any) => console.log("adding to the DB", result)        
           );
