@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<button class="btn-primary">Start a new Comment!</button>
+<div class="row justify-content-start">
+  <div class="container col-8" *ngIf="comments.length > 0 else noComments">
+    <table class="table">
+      <thead>
+      <th>Topic:</th>
+      <th>Comment:</th>
+      <tbody *ngFor="let comment of comments">
+        <tr>
+          <td>
+            <div>
+              <i class="fa fa-newspaper-o" aria-hidden="true"> {{comment.topic}}</i>
+              <span><p>{{comment.userName}}</p></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{comment.Message}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <ng-template #noComments>
+    <div class="col-8">
+      <h4>Congradulations! You are the first to start a Comment for this Post. Make it a good one.</h4>
+    </div>
+  </ng-template>

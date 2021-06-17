@@ -11,7 +11,7 @@ import { Forum } from '../../models/Forum';
 export class AddForumComponent implements OnInit {
 
   newForum: Forum = {
-    forumID: 1,
+    forumID: 0,
     topic: 'default',
     description: 'default'
   }
@@ -27,7 +27,7 @@ export class AddForumComponent implements OnInit {
   }
 
   onSubmit(): void {
-    //alert(this.newForum.topic + " " + this.newForum.description)
+    alert(this.newForum.topic + " " + this.newForum.description)
     this.service.AddForum(this.newForum).then(result =>
       this.router.navigate(['Forum'])
     ).catch(err => alert(err));

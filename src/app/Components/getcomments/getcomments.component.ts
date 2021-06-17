@@ -1,45 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DNHService } from '../../dnh.service';
-import { Post } from '../../models/Post';
+import { Forum } from '../../models/Forum';
 import { PetFinderService } from '../../pet-finder.service';
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
-  selector: 'app-getposts',
-  templateUrl: './getposts.component.html',
-  styleUrls: ['./getposts.component.css']
+  selector: 'app-getcomments',
+  templateUrl: './getcomments.component.html',
+  styleUrls: ['./getcomments.component.css']
 })
-export class GetpostsComponent implements OnInit {
+export class GetcommentsComponent implements OnInit {
 
-  posts: Post[] = [];
   dogs: any;
-  forumID: number = 0;
+  comments: any;
+  postID: number = 0;
 
   constructor(
-    private route: ActivatedRoute,
     private service: DNHService,
     private router: Router,
-    private petFinder: PetFinderService) { }
+    private petFinder: PetFinderService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(
       params => {
-        this.service.GetPosts(params.forumId).then(
+        this.service.GetAllComments(params.postID).then(
           result => {
-            this.posts = result;
+            this.comments = result;
           }
         );
-        this.forumID = params.forumId;
+        this.postID = params.forumId;
       }
     )
 
-    this.getToken()
-
+    this.getToken();
   }
+
   getToken() {
     this.petFinder.GetToken().subscribe(token => {
       this.petFinder.SetToken(token)
+      console.log("token set")
       this.getDogs()
     })
   }
@@ -48,14 +50,8 @@ export class GetpostsComponent implements OnInit {
     this.petFinder.GetDogs().subscribe(dogs => {
       console.log(dogs)
       this.dogs = dogs;
+
     });
   }
 
-  AddPost(): void {
-    this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
-  }
-
-  GoToComments(postID: number): void {
-    this.router.navigate(['Comment'], { queryParams: { postID: postID } });
-  }
 }

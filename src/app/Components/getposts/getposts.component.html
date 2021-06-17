@@ -10,8 +10,8 @@
         <tr>
           <td>
             <div>
-              <i class="fa fa-newspaper-o" aria-hidden="true"> {{post.topic}}</i>
-              <span> - <p>{{post.userName}}</p></span>
+              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID)"> {{post.topic}}</i>
+              <span> - <p>{{post.userCreator}}</p></span>
             </div>
           </td>
         </tr>

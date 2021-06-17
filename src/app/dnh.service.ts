@@ -44,13 +44,13 @@ export class DNHService {
       }
     )
   }
-
+  // Forums
   GetForums(): Promise<Forum[]> {
-    this.url = this.BaseURL + 'Forum/';
+    this.url = this.BaseURL + 'Forum';
     return this.http.get<Forum[]>(this.url).toPromise();
   }
   AddForum(newForum: Forum): Promise<Forum>{
-    this.url = this.BaseURL + 'Forum/';
+    this.url = this.BaseURL + 'Forum';
     return this.http.post<Forum>(this.url, newForum).toPromise();
   }
   //Posts
@@ -58,11 +58,11 @@ export class DNHService {
     this.url = this.BaseURL + 'Post/' + forumID;
     return this.http.get<Post[]>(this.url).toPromise();
   }
-  AddPost(postToAdd: Post): void {
-    this.url = this.BaseURL + 'Post';
-    alert(this.url);
-    this.http.post<Post>(this.url, postToAdd);
+  AddPost(postToAdd: Post): Promise<Post> {
+    this.url = this.BaseURL + 'Post/';
+    return this.http.post<Post>(this.url, postToAdd).toPromise();
   }
+  //DogList
   AddDogList(newDogList: doglist) : Promise<doglist>
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
@@ -74,5 +74,10 @@ export class DNHService {
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
-  // this.http.get<[]>(
+  //Comments
+  GetAllComments(postID: number): Promise<Comment[]>
+  {
+    this.url = this.BaseURL + "Comment/" + postID;
+    return this.http.get<Comment[]>(this.url).toPromise();
+  }
 }
