@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
       this.petFinder.SetToken(token)
       console.log("token set")
       this.getDogs()
-      // this.getTest()
+      this.getTest()
     })
   }
 
@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getToken()
-    // this.getDogs()
+    this.getDogs()
     // this.getTest()
     this.printUser2()
   }

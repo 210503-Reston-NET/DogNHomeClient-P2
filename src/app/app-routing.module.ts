@@ -30,7 +30,7 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
-    path: "List/:id", 
+    path: "List", 
     component: DogListComponent,
     canActivate: [LoggedInGuard]
   },

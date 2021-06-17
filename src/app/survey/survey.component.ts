@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { PetFinderService } from '../pet-finder.service'
 import {doglist} from 'src/app/survey/DogList'
 import {listeddog} from 'src/app/survey/ListedDog'
+import { ActivatedRoute } from '@angular/router';
+import { loadTranslations } from '@angular/localize';
 
 @Component({
   selector: 'app-survey',
@@ -33,7 +35,7 @@ export class SurveyComponent implements OnInit {
 
 
 
-  
+  public myInt: number=0;
   size!: string;
   sizes: string [] = ['small', 'medium', 'large', 'xlarge']; 
 
@@ -58,7 +60,7 @@ export class SurveyComponent implements OnInit {
  
   
 
-  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router  ) {
+  constructor(private petFinder: PetFinderService, private dnhService: DNHService, private router: Router, private route: ActivatedRoute  ) {
 
  
   
@@ -103,27 +105,23 @@ ngOnInit(): void {
 
   
   
-  GoToHome()
+  GoToHome():void
   {
     this.AddTheSurveyList(); 
+    console.log("LEAVING SURVEY1:", this.myInt)
+    this.DoglistPage();
     
     
-    this.router.navigate(["List/:id"])
+  }
+  DoglistPage(): void
+  {
+
+    console.log("LEAVING SURVEY2:", this.myInt)
+    
   }
 
   
-  AddTheSurveyList(): void {
   
-    this.dnhService.AddDogList(this.surveyList).then( result =>
-        {
-          console.log(result) 
-          console.log(result.listID) 
-            
-          this.filterDogs(result.listID)
-          this.router.navigate(["List/:id"])
-        }
-    ).catch(err => console.log(err));
-    }
 
   filterDogs(ids: any){
     console.log("filteringToAddList")
@@ -181,6 +179,21 @@ ngOnInit(): void {
       
   }
 
+  AddTheSurveyList(): void {
+  
+    this.dnhService.AddDogList(this.surveyList).then( result =>
+        {
+          console.log(result) 
+          console.log(result.listID) 
+          this.dogtolist.id = result.listID
+          console.log("POST ASSIGNMENT:", this.dogtolist.id)
+          this.filterDogs(result.listID)  
+          this.myInt = this.dogtolist.id
+          console.log("MY INT VALUE", this.myInt)
+          this.router.navigate(["List"], { queryParams: { listID: this.myInt }})
+        }
+    ).catch(err => console.log(err));
+    }
 }
 
 
