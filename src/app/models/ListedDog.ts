@@ -1,5 +1,5 @@
 export interface listeddog{
-    dogid: string;
+    dogs: string;
     id: number;
     
 }

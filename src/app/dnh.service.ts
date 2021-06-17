@@ -64,10 +64,10 @@ export class DNHService {
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
   }
-  AddListedDog(newListedDog: listeddog) : Promise<doglist>
+  AddListedDog(newListedDog: listeddog) : Promise<listeddog>
   {
     console.log("ENTER")              //'https://dognhome.azurewebsites.net/api/DogList/50'
-    return this.http.post<doglist>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
+    return this.http.post<listeddog>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
