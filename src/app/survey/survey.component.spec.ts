@@ -1,16 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatRadioModule } from '@angular/material/radio';
 import { SurveyComponent } from './survey.component';
+import {RouterTestingModule} from '@angular/router/testing'
+
 import { MatListModule } from '@angular/material/list';
+import { PetFinderService } from '../pet-finder.service'
+import { DNHService } from '../dnh.service';
+import {HttpTestingController, HttpClientTestingModule} from "@angular/common/http/testing";
 
-
+//private petFinder: PetFinderService, private dnhService: DNHService, private router: Router
 describe('SurveyComponent', () => {
   let component: SurveyComponent;
   let fixture: ComponentFixture<SurveyComponent>;
 
+  class MockService
+  {
+    addDogList(){};
+  }
+  
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SurveyComponent ]
+      imports: [RouterTestingModule,HttpClientTestingModule ],
+      declarations: [ SurveyComponent ],
+      providers:[PetFinderService, DNHService]
     })
     .compileComponents();
   });
@@ -24,4 +37,6 @@ describe('SurveyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+ 
 });

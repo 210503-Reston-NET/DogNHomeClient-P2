@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { DNHService } from '../../dnh.service';
 import { Post } from '../../models/Post';

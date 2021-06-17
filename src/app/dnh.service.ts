@@ -7,12 +7,14 @@ import { Post } from './models/Post';
 import {doglist} from '../app/survey/DogList';
 import { listeddog } from './survey/ListedDog';
 import { Comments } from './models/Comments';
+import { likes } from './models/Likes';
 @Injectable({
   providedIn: 'root'
 })
 export class DNHService {
   baseURLDL: string = "https://dognhome.azurewebsites.net/api/DogList/";
   baseURLLD: string = "https://dognhome.azurewebsites.net/api/ListedDog/";
+  baseURLL: string = "https://dognhome.azurewebsites.net/api/Likes/";
   constructor(private http: HttpClient,) { }
 
   BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
@@ -74,7 +76,19 @@ export class DNHService {
   }
   AddListedDog(newListedDog: listeddog) : Promise<listeddog>
   {
-    return this.http.post<listeddog>(this.baseURLLD, newListedDog).toPromise() 
+    console.log("ENTER")              //'https://dognhome.azurewebsites.net/api/DogList/50'
+    return this.http.post<listeddog>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
+  }
+  GetListedDogByID(id:any): Promise<[]> {
+    return this.http.get<[]>(this.BaseURL + "ListedDog/" + id).toPromise();
+  }
+  AddLikes(newLikes: likes ) : Promise<likes>
+  {
+    return this.http.post<likes>(this.baseURLL, newLikes).toPromise() 
+  }
+  GetAllListedDogs(): Promise<listeddog>
+  {
+    return this.http.get<listeddog>(this.baseURLLD).toPromise();
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
@@ -90,5 +104,4 @@ export class DNHService {
     this.url = this.BaseURL + "Comment"
     return this.http.post<Comments>(this.url, newComment).toPromise();
   }
- 
 }
