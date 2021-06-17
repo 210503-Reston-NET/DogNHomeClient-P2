@@ -1,7 +1,14 @@
-thead {
-    background-color: gray;
-}
-tbody {
-    background-color: darkgray;
-}
 
+th {
+  background-color: #607D8A;
+  color: white;
+}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#odd {
+  background-color: #f2f2f2;
+}
+#even {
+
+}

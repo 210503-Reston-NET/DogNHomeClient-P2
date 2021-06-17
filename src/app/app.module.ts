@@ -39,6 +39,8 @@ import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
+import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
+import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     AddForumComponent,
     GetpostsComponent,
     AddpostsComponent,
+    GetcommentsComponent,
+    AddcommentsComponent,
     
   ],
   imports: [
