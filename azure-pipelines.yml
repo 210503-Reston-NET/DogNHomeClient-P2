@@ -32,6 +32,10 @@ steps:
     command: custom  
     verbose: false  
     customCommand: 'run build --prod'  
+- task: CmdLine@2
+  displayName: "Run Angular tests"
+  inputs:
+    script: "ng test --browsers=ChromeHeadless --code-coverage --watch=false"
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
