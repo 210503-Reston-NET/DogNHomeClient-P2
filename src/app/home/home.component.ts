@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getToken()
-    // this.getDogs()
+     this.getDogs()
     // this.getTest()
     this.printUser2()
   }
