@@ -13,7 +13,10 @@ export class GetpostsComponent implements OnInit {
 
   posts: Post[] = [];
   dogs: any;
+<<<<<<< HEAD
+=======
   forumID: number = 0;
+>>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +31,13 @@ export class GetpostsComponent implements OnInit {
           result => {
             this.posts = result;
           }
+<<<<<<< HEAD
+        )
+=======
         );
         alert(params.forumId)
         this.forumID = params.forumId;
+>>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
       }
     )
 
@@ -51,7 +58,16 @@ export class GetpostsComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
+  AddForum(): void {
+    this.router.navigate(['addForum']);
+  }
+
+  GoToPosts(forumID: number) {
+    this.router.navigate(['Post'], { queryParams: { forumId: forumID } });
+=======
   AddPost(): void {
     this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
+>>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
   }
 }
