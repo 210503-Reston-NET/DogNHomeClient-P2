@@ -17,7 +17,7 @@ export class SurveyComponent implements OnInit {
   public dogsss: string = ''
   public doggies: any = []
   dogtolist: listeddog ={
-    dogid: '', 
+    dogs: '', 
     id: 0,
   }
   
@@ -150,20 +150,24 @@ ngOnInit(): void {
           //this.dogtolist.id = ids
           //console.log(ids)
           //console.log(this.dogtolist.dogid)
-          this.dogtolist.dogid = this.dogsss
-          console.log('GIVE ME DOG TO LIST', this.dogtolist)
+          
+        });
+
+        this.dogtolist.dogs = this.doggies
+          //console.log('GIVE ME DOG TO LIST', this.dogtolist)
           this.dnhService.AddListedDog(this.dogtolist).then(
             (result:any) => console.log("adding to the DB", result)        
           );
-        });
-        console.log(this.doggies)
+
+        console.log(this.dogtolist.dogs)
+        //console.log(this.doggies)
         this.dogtolist.id = ids
-        this.dogtolist.dogid = this.doggies
+        //this.dogtolist.dogs = this.doggies
         //console.log(this.dogtolist)
         //console.log(this.dogtolist.dogid)
         //this.dnhService.AddListedDog(this.dogtolist).then(
           //(result:any) => console.log("adding to the DB", result)        
-       // );
+       // ); 
         //this.dogIdArr = this.dogsArr.forEach((dogss:any) => this.dogIdArr.push(dogss.animals.id))
         console.log("ABOUT TO GET DOGSARR");
         //console.log(this.dogIdArr);
