@@ -128,16 +128,15 @@
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>Name: {{dog.name}}</mat-card-title>
-                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                        <mat-card-subtitle></mat-card-subtitle>
                     </mat-card-header>
-                    <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+                    <img class="dog-img" *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
                     <mat-card-content>
-                        <p>
-                        dog
-                        </p>
                     </mat-card-content>
                     <mat-card-actions>
-                        <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                        <button mat-raised-button color="primary" >
+                        <a class="dog-card-btn" routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                        </button>
                     </mat-card-actions>
                 </mat-card>
             </mat-grid-tile>

@@ -38,10 +38,10 @@ export class DogDetailsComponent implements OnInit {
 
   getDetails(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.petFinder.GetDog(id).subscribe(dog => {
+    this.petFinder.GetDog(id).subscribe((dog: any) => {
       this.dog = dog
       this.dogPhotos = this.dog.animal.photos
-      console.log(this.dogPhotos)
+      console.log(dog)
       this.getLocation(this.dog.animal.organization_id)
     })
   }
