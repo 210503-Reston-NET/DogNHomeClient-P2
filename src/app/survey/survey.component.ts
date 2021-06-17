@@ -106,7 +106,7 @@ ngOnInit(): void {
    this.auth.getUser().subscribe((result:any) => {
     if (result)
       if (result.displayName) {
-        this.surveyList.username = result.displayName
+        this.surveyList.username = result.uid 
       }
       else if (result.email) {
         alert(result.email)
