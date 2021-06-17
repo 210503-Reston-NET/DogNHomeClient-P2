@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
-import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
 import { Forum } from './models/Forum';
 import { Post } from './models/Post';
 import {doglist} from '../app/survey/DogList';
@@ -34,20 +32,6 @@ export class DNHService {
     )
   }
 
-  getDogAPI(id: any){
-  const headers= new HttpHeaders()
-  .set('content-type', 'application/json')
-  .set('Access-Control-Allow-Origin', '*');
-
-    return this.http.get(
-      "https://dognhome.azurewebsites.net/api/Dog/",
-      {
-        headers:
-          headers
-      }
-    )
-  }
-  // Forums
   GetForums(): Promise<Forum[]> {
     this.url = this.BaseURL + 'Forum';
     return this.http.get<Forum[]>(this.url).toPromise();
@@ -92,6 +76,38 @@ export class DNHService {
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
+  }
+  setAlert(mcguffin: any){
+    return this.http.post(
+      this.BaseURL + "Alert",
+      mcguffin
+    )
+  }
+  // user id
+  getAlerts(id: any){
+    return this.http.get(
+      this.BaseURL+"Alert/"+(id.toString())
+    )
+  }
+
+  removeAlert(xalert: any){
+    
+    const httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: xalert
+    };
+
+    return this.http.delete(
+      this.BaseURL+"Alert/"+(xalert.alertID.toString()),
+      httpOptions
+    )
+  }
+
+  seenAlertedDogs(xalert: any){
+
+    return this.http.put(
+      this.BaseURL+"Alert/",
+      xalert
+    )
   }
   //Comments
   GetAllComments(postID: number): Promise<Comments[]>

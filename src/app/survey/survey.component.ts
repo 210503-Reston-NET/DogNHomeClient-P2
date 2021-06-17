@@ -119,10 +119,6 @@ ngOnInit(): void {
     console.log("LEAVING SURVEY2:", this.myInt)
     
   }
-<<<<<<< HEAD
-
-  
-  
 
   filterDogs(ids: any){
     console.log("filteringToAddList")
@@ -157,34 +153,10 @@ ngOnInit(): void {
           this.dnhService.AddListedDog(this.dogtolist).then(
             (result:any) => console.log("adding to the DB", result)        
           );
-
-        console.log(this.dogtolist.dogs)
-        //console.log(this.doggies)
-        this.dogtolist.id = ids
-        //this.dogtolist.dogs = this.doggies
-        //console.log(this.dogtolist)
-        //console.log(this.dogtolist.dogid)
-        //this.dnhService.AddListedDog(this.dogtolist).then(
-          //(result:any) => console.log("adding to the DB", result)        
-       // ); 
-        //this.dogIdArr = this.dogsArr.forEach((dogss:any) => this.dogIdArr.push(dogss.animals.id))
-        console.log("ABOUT TO GET DOGSARR");
-        //console.log(this.dogIdArr);
-        console.log("JUST GOT DOGSARR");
-        //console.log("Date = " + this.surveyList.created) 
-        
-        //this.dnhService.AddListedDog(this.dogtolist)
-          
-        });; //NEED TO CHANGE THIS
+        this.dogtolist.id = ids 
+      });
       
       
-=======
-  AddTheSurveyList(): void {
-  
-  this.dnhService.AddDogList(this.surveyList).then( result =>
-        this.router.navigate(["List/:id"])
-  ).catch(err => console.log(err));
->>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
   }
 
   AddTheSurveyList(): void {

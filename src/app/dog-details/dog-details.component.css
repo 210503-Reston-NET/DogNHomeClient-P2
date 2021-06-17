@@ -5,7 +5,7 @@
 } 
 
 .background{
-    background-color: rgb(248,248,241);
+    background-color: #f8f8f1;
     /* background-image: url("../../assets/Screen\ Shot\ 2021-06-04\ at\ 8.57.08\ AM.png"); */
     padding-bottom: 10px;
     padding-top: 2rem;
@@ -84,5 +84,47 @@
 .carouse{
     margin-left: auto;
     margin-right: auto;
+    width: 50%;
+}
+.address {
+    /* display: inline-block; */
+    /* width: 50%; */
+    /* float: left; */
+}
+.contact{
+    /* display: inline-block;
+    margin-left: 20vw; */
+
+    /* float: right; */
+    /* width: 30%; */
+}
+.social-media{
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    /* position: relative; */
+    /* justify-content: center; */
+    color: black;
+}
+.social-media a{
+    margin-left: 15px;
+    font-size: 2rem;
+}
+.center{
+    /* justify-content: center; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: fit-content; */
+}
+.fa-facebook-square{
+    color: #3b5998;
+}
+.fa-instagram{
+    color: #DD2A7B
+}
+.fa-pinterest{
+    color: #BD081C;
+}
+.conatiner-map{
     width: 50%;
 }

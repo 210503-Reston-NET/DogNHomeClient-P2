@@ -97,35 +97,49 @@
           </div>
           <div class="background btn-div">
               <button mat-raised-button color="primary" (click)="filterDogs()">Filter</button>
+              <br>
+              <hr>
+          </div>
+          <div class="background alert-filter">
+            <h4>Or Create an Alert! </h4>
+            <p>Save the current filter settings as an alert, and the next time a dog meeting that criteria is updated we will send you an alert.</p>
+            <p>Manage your alerts in your profile page</p>
+            <mat-form-field appearance="outline" class="alert-form">
+                <mat-label>Alert Name</mat-label>
+                <input matInput placeholder="Short Haired" [(ngModel)]="filterName">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="saveAlert()">Save Alert</button>
           </div>
         </div>
         <div class="col-md-8 " *ngIf="dogsArr">
-            <!-- <mat-card class="example-card" *ngFor="let dog of dogs.animals">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>Name: {{dog.name}}</mat-card-title>
-                  <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                </mat-card-header>
-                <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
-                <mat-card-content>
-                  <p>
-                    dog
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
-                </mat-card-actions>
-            </mat-card> -->
+            
+
         <mat-grid-list cols="2" rowHeight="1:2">
             <mat-grid-tile *ngFor="let dog of dogsArr.animals">
-                <ul >
+                <!-- <ul >
                     <li>
                         <p>Name: {{dog.name}}</p>
                 
                         <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
                         <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
                     </li>
-                </ul>
+                </ul> -->
+                <mat-card class="example-card" >
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Name: {{dog.name}}</mat-card-title>
+                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+                    <mat-card-content>
+                        <p>
+                        dog
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                    </mat-card-actions>
+                </mat-card>
             </mat-grid-tile>
         </mat-grid-list>
         </div>

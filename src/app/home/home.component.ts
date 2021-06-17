@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-// import * as firebase from "firebase";
-// import {FormBuilder, FormGroup} from '@angular/forms';
-// import { Output, EventEmitter } from '@angular/core';
-
 
 import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service'
-// import { FirebaseApp } from '@angular/fire';
-// import { FirestoreSyncService } from 'ngx-auth-firebaseui';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -18,6 +13,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class HomeComponent implements OnInit {
 
   public dogsArr: any;
+  public filterName: any;
+  public dogHolder: any;
+  public userHolder: any;
+  public alertsArrHolder: string[] = [];
 
   public gender: string = "";
   public age: string = "";
@@ -49,12 +48,11 @@ export class HomeComponent implements OnInit {
   public houseTrained = false;
   
 
-  constructor(private petFinder: PetFinderService, 
+  constructor(
+    private petFinder: PetFinderService, 
     private dnhService: DNHService,
-    private af: AngularFireAuth
-    ) { 
-       
-    }
+    private auth: AuthService
+    ) { }
 
     findSizeVal(){
       if(this.value > 110){
@@ -68,13 +66,69 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    filterDogs(){
-      console.log("filtering")
+    saveAlert(){
+      let urlRequest = this.filterStringBuilder()
+      
+      urlRequest += "&limit=1"
+      this.petFinder.GetDogsFiltered(urlRequest).subscribe(dog => {
+        console.log(dog)
+        this.dogHolder = dog
+
+        let mostRecentDog = this.dogHolder.animals[0].id
+
+
+        this.auth.getUser().subscribe(token => {
+          let userId = token?.uid
+
+          this.dnhService.setAlert({
+            AlertID: 0,
+            UserID: userId,
+            AlertType: this.filterName,
+            AlertValue: urlRequest,
+            DogID: mostRecentDog
+          }).subscribe(result => {
+            this.filterName = ""
+          })
+
+        })
+      })
+    }
+
+    getUserIdForAlertCheck(){
+      this.auth.getUser().subscribe(user =>{
+        this.userHolder = user?.uid
+        this.checkAlerts(this.userHolder)
+      })
+    }
+
+    checkAlerts(userId: any){
+
+      this.dnhService.getAlerts(userId).subscribe((res: any) => {
+
+        res.forEach((x: any) => {
+          this.checkForNewDog(x.dogID, x.alertValue, x.alertType)
+        })
+        
+      })
+    }
+
+    checkForNewDog(dogID: string, url: string, alertName: string){
+      this.petFinder.GetDogsFiltered(url).subscribe((res: any )=> {
+ 
+        if(res.animals[0].id.toString() === dogID){
+          return
+        }else if(res.animals[0].id.toString() !== dogID){
+          alert("A new dog matching criteria in '"+alertName+"' has been updated, go to your alerts to see the new dogs!")
+        }
+      })
+    }
+
+    filterStringBuilder(){
       let request = "https://api.petfinder.com/v2/animals?type=dog&size=" + this.findSizeVal() +
       "&good_with_children" + this.children +
-      "&good_with_cats" + this.cats +
-      "&good_with_dogs" + this.dogs +
-      "&house_trained" + this.houseTrained;
+      "&good_with_cats=" + this.cats +
+      "&good_with_dogs=" + this.dogs +
+      "&house_trained=" + this.houseTrained;
       if(this.gender){
         request += "&gender=" + this.gender
       }
@@ -91,57 +145,41 @@ export class HomeComponent implements OnInit {
         request += "&location=" + this.location.city.trim().toLowerCase() + "," + this.location.state.trim().toLowerCase()
         + "&distance=" + this.distance
       }
-    
-      console.log(request)
+
+      return request
+    }
+
+    filterDogs(){
+
+      const request = this.filterStringBuilder()
+
       this.petFinder.GetDogsFiltered(request).subscribe(dogs => {
-        console.log(dogs)
         this.dogsArr = dogs
-        console.log(this.dogsArr)
-      
       })
-  
     }
 
   getToken(){ 
-    this.petFinder.GetToken().subscribe(token => {
-      this.petFinder.SetToken(token)
-      console.log("token set")
+
+    if(this.petFinder.token){
       this.getDogs()
-      // this.getTest()
-    })
+      this.getUserIdForAlertCheck()
+    }else if(!this.petFinder.token){
+      this.petFinder.GetToken().subscribe(token => {
+        this.petFinder.SetToken(token)
+        this.getDogs()
+        this.getUserIdForAlertCheck()
+      })
+    }
   }
 
   getDogs(){
-    // this.printUser2()
     this.petFinder.GetDogs().subscribe(dogs => {
-      console.log(dogs)
       this.dogsArr = dogs;
     });
   }
 
-  getTest(){
-    console.log("starting test")
-    this.petFinder.getTest().subscribe(
-      data => console.log("this is the test", data)
-      )
-  }
-
   ngOnInit(): void {
     this.getToken()
-<<<<<<< HEAD
-     this.getDogs()
-=======
-    // this.getDogs()
->>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
-    // this.getTest()
-    this.printUser2()
-  }
-
-  printUser2(){
-    this.af.authState.subscribe(auth => {
-      console.log(auth)
-    })
-
   }
 
 }

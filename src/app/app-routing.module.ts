@@ -32,11 +32,7 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
-<<<<<<< HEAD
     path: "List", 
-=======
-    path: "List/:id", 
->>>>>>> 60304ac6561655e7817f0d1b236a62105f8ea8a5
     component: DogListComponent,
     canActivate: [LoggedInGuard]
   },
@@ -53,14 +49,14 @@ const routes: Routes = [
   { path: "Comment", component: GetcommentsComponent },
   { path: "addComment", component: AddcommentsComponent },
   {
-    path: "*", 
+    path: "**", 
     component: HomeComponent,
     canActivate: [LoggedInGuard],
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

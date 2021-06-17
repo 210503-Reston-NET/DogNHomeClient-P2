@@ -56,37 +56,22 @@ export class DogListComponent implements OnInit {
     });
   }
 
-  getDogAPI(){
-    console.log("MY DOGGOS LOG", this.doggos)
-      this.doggos.array.forEach((int:any) => {
-        this.dnhService.getDogAPI(int).subscribe(data =>{ console.log(data)
-          this.dogIdArr = data 
-      });
-    }
-    )
-    
-  }
-
-
   ngOnInit(): void {
-    
-    //this.getToken()
-    // this.getDogs()
+
     this.getToken()
-    console.log("I GET TO THIS POINT")
     this.route.queryParams.subscribe(
       params => {
         console.log("IT GOT PASSED BY SURVEY", params.listID)
-        this.getTheSurveyDogs(parseInt(params.listID)-1)    
-        
+        this.getTheSurveyDogs(parseInt(params.listID)-1)
+
       }
         )
         console.log("MY TESTING LIST", this.dogIdArr)
-        
-        
-        
+
+
+
       }
-    
+
   getTheSurveyDogs(id:number):void
   {
     this.dnhService.GetListedDogByID(id).then(result => {
@@ -99,17 +84,10 @@ export class DogListComponent implements OnInit {
         console.log ("Testing this out", this.dogAPI)
       })
       console.log("MY DOGGOS LOG1", this.doggos)
-      this.getDogsById(this.doggos)  
-        
-   
-      
-      });
-    }
-    
-    
-    
+      this.getDogsById(this.doggos)
 
+
+
+    });
   }
-
-
-
+}
