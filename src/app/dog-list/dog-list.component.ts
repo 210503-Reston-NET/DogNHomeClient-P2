@@ -45,16 +45,10 @@ export class DogListComponent implements OnInit {
     });
   }
 
-  getDogAPI(){
-    this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  }
-
 
   ngOnInit(): void {
     
     this.getToken()
-    // this.getDogs()
-    this.getDogAPI()
     this.dnhService.GetAllDogList().then(result => this.dogs = result);
 
   }

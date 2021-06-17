@@ -45,14 +45,14 @@ const routes: Routes = [
   { path: "Post", component: GetpostsComponent },
   { path: "addPost", component: AddpostsComponent},
   {
-    path: "*", 
+    path: "**", 
     component: HomeComponent,
     canActivate: [LoggedInGuard],
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -97,6 +97,18 @@
           </div>
           <div class="background btn-div">
               <button mat-raised-button color="primary" (click)="filterDogs()">Filter</button>
+              <br>
+              <hr>
+          </div>
+          <div class="background alert-filter">
+            <h4>Or Create an Alert! </h4>
+            <p>Save the current filter settings as an alert, and the next time a dog meeting that criteria is updated we will send you an alert.</p>
+            <p>Manage your alerts in your profile page</p>
+            <mat-form-field appearance="outline" class="alert-form">
+                <mat-label>Alert Name</mat-label>
+                <input matInput placeholder="Short Haired" [(ngModel)]="filterName">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="saveAlert()">Save Alert</button>
           </div>
         </div>
         <div class="col-md-8 " *ngIf="dogsArr">

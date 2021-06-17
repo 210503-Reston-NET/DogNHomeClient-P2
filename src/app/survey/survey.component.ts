@@ -92,15 +92,9 @@ export class SurveyComponent implements OnInit {
     });
   }
 
-  getDogAPI(){
-    this.dnhService.getDogAPI(1).subscribe(data => console.log(data))
-  }
-
 
   ngOnInit(): void {
     this.getToken()
-    // this.getDogs()
-    this.getDogAPI()
 
   }
 

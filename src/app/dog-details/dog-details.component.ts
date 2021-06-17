@@ -27,7 +27,8 @@ export class DogDetailsComponent implements OnInit {
       })
     }
 
-  goBakc(){
+  goBack(){
+    console.log("going back")
     this.location.back()
   }
 
@@ -47,6 +48,10 @@ export class DogDetailsComponent implements OnInit {
       console.log(loc)
       this.loc = loc
     })
+  }
+
+  directions(){
+    this.loc.organization.address
   }
   ngOnInit(): void {
     this.getToken()

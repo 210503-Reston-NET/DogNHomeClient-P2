@@ -79,4 +79,9 @@ hr{
 
 .btn-div{
     padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.alert-form{
+    margin-right: 20px;
 }

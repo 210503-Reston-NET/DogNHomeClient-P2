@@ -31,19 +31,19 @@ export class DNHService {
     )
   }
 
-  getDogAPI(id: any){
-  const headers= new HttpHeaders()
-  .set('content-type', 'application/json')
-  .set('Access-Control-Allow-Origin', '*');
+  // getDogAPI(id: any){
+  // const headers= new HttpHeaders()
+  // .set('content-type', 'application/json')
+  // .set('Access-Control-Allow-Origin', '*');
 
-    return this.http.get(
-      "https://dognhome.azurewebsites.net/api/Dog/",
-      {
-        headers:
-          headers
-      }
-    )
-  }
+  //   return this.http.get(
+  //     "https://dognhome.azurewebsites.net/api/Dog/",
+  //     {
+  //       headers:
+  //         headers
+  //     }
+  //   )
+  // }
 
   GetForums(): Promise<Forum[]> {
     this.url = this.BaseURL + 'Forum/';
@@ -70,5 +70,40 @@ export class DNHService {
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
   }
-  // this.http.get<[]>(
+  setAlert(mcguffin: any){
+    return this.http.post(
+      this.BaseURL + "Alert",
+      mcguffin
+    )
+  }
+  // user id
+  getAlerts(id: any){
+    return this.http.get(
+      this.BaseURL+"Alert/"+(id.toString())
+    )
+  }
+
+  removeAlert(xalert: any){
+    
+    const httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: xalert
+    };
+
+    return this.http.delete(
+      this.BaseURL+"Alert/"+(xalert.alertID.toString()),
+      httpOptions
+    )
+  }
+
+  seenAlertedDogs(xalert: any){
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: xalert
+    };
+
+    return this.http.put(
+      this.BaseURL+"Alert/",
+      httpOptions
+    )
+
+  }
 }

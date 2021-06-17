@@ -7,12 +7,11 @@ import { environment } from '../environments/environment';
 })
 export class PetFinderService {
 
-  private token: any;
+  public token: any;
   constructor(private http: HttpClient) { }
 
 
   GetToken(){
-    console.log("getting token")
     return this.http.post(
       "https://api.petfinder.com/v2/oauth2/token/",
       environment.petFinderCeds

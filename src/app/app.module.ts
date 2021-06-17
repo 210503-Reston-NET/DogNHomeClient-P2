@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { loadModules } from 'esri-loader';
+// import {} from 'google.maps'
 
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -33,12 +35,12 @@ import { SurveyComponent } from './survey/survey.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SearchFilterComponent } from './home/search-filter/search-filter.component';
-import { HomeMainComponent } from './home/home-main/home-main.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { AddForumComponent } from './Components/add-forum/add-forum.component';
 import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
+import { MapComponent } from './Components/map/map.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -50,12 +52,11 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     SurveyComponent,
     LoginComponent,
     NavbarComponent,
-    SearchFilterComponent,
-    HomeMainComponent,
     ForumComponent,
     AddForumComponent,
     GetpostsComponent,
     AddpostsComponent,
+    MapComponent,
     
   ],
   imports: [
@@ -87,6 +88,7 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    // google
   ],
   providers: [],
   bootstrap: [AppComponent]
