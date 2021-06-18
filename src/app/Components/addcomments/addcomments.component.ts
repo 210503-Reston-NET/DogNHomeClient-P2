@@ -21,13 +21,7 @@ export class AddcommentsComponent implements OnInit {
     created: new Date(),
     message: "",
     }
-  currentPost: Post =
-    {
-      postID: 0,
-      forumID: 0,
-      topic: "default",
-      userCreator: 'user'
-    }
+  currentPost: string = "Not Found";
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +37,6 @@ export class AddcommentsComponent implements OnInit {
           this.newComment.userName = result.displayName
         }
         else if (result.email) {
-          alert(result.email)
           this.newComment.userName = result.email
         }
     });
@@ -51,19 +44,15 @@ export class AddcommentsComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.newComment.postID = params.postID;
-
-        this.service.GetPost(params.postID).then(result =>
-          this.currentPost.topic = result.topic
-        );
-
+        this.currentPost = params.postTopic;
+        console.log(this.currentPost);
       });
 
   }
 
   onSubmit(): void {
-    alert(this.currentPost.topic)
     this.service.AddComments(this.newComment).then( result =>
-      this.router.navigate(['Comment'])
+      this.router.navigate(['Comment'], { queryParams: { postID: this.newComment.postID , postTopic: this.currentPost} })
       );
   }
 

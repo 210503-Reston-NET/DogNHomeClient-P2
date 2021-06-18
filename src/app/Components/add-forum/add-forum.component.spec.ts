@@ -20,8 +20,11 @@ describe('AddForumComponent', () => {
 
   }
   class MockService {
-    AddForum(){};
-    GetForums(){};
+    AddForum(fakeForum: Forum){};
+    GetForums(): Promise<any[]>
+    {
+      return new Promise<void[]>((resolve, reject) => {})
+    };
 
   }
 

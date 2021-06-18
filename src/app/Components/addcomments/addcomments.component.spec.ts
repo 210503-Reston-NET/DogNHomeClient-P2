@@ -41,7 +41,9 @@ describe('AddcommentsComponent', () => {
         },
       ]
     })
-    .compileComponents();
+      .compileComponents();
+    // service = TestBed.inject(DNHService);
+    // httpMock = TestBed.inject(HttpTestingController);
   });
 
   beforeEach(() => {

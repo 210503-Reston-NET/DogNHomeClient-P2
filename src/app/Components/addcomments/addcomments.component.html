@@ -1,8 +1,10 @@
+<app-navbar></app-navbar>
+
 
 <div class="container transparent">
   <form (ngSubmit)="onSubmit()" #forumForm="ngForm">
     <div class="form-group">
-      <h1 for="topic">{{currentPost.topic}} </h1>
+      <h1 for="topic">{{currentPost}} </h1>
       <input type="text" [(ngModel)]="newComment.message" class="form-control" #name="ngModel"
              placeholder="Tell us what you think" name="forum">
     </div>

@@ -8,7 +8,7 @@ import { PetFinderService } from '../pet-finder.service'
 import { DNHService } from '../dnh.service';
 import {HttpTestingController, HttpClientTestingModule} from "@angular/common/http/testing";
 
-//private petFinder: PetFinderService, private dnhService: DNHService, private router: Router
+//private petFinder: PetFinderService, private dnhService: DNHService, private router: Router initial
 describe('SurveyComponent', () => {
   let component: SurveyComponent;
   let fixture: ComponentFixture<SurveyComponent>;

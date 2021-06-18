@@ -6,6 +6,7 @@ import {doglist} from '../app/survey/DogList';
 import { listeddog } from './survey/ListedDog';
 import { Comments } from './models/Comments';
 import { likes } from './models/Likes';
+import { User } from './models/User';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,10 @@ export class DNHService {
 
   BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
   url: string = '';
+  usr: User = 
+  {
+   UserID: "default"
+  }
 
 
   // the backend takes in a string for the user id
@@ -25,12 +30,11 @@ export class DNHService {
   // else create new user with id
   // create faviorte list for new user
 
-  userSignIn(id: any){
-    console.log(id)
+  userSignIn(uid: string) {
+    this.usr.UserID = uid;
     this.http.post(
-      this.BaseURL+"User/",
-      id
-    )
+      this.BaseURL + "User", this.usr
+    ).toPromise().catch(result => console.log("error", result));
   }
 
   GetForums(): Promise<Forum[]> {
@@ -51,7 +55,7 @@ export class DNHService {
     return this.http.post<Post>(this.url, postToAdd).toPromise();
   }
   GetPost(postID: number): Promise<Post> {
-    this.url = this.BaseURL + "Comment/" + postID;
+    this.url = this.BaseURL + "Post/" + postID + "/specific";
     return this.http.get<Post>(this.url).toPromise();
   }
   //DogList
@@ -59,21 +63,25 @@ export class DNHService {
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
   }
-  AddListedDog(newListedDog: listeddog) : Promise<listeddog>
+  AddListedDog(newListedDog: listeddog) : Promise<string>
   {
     console.log("ENTER")              //'https://dognhome.azurewebsites.net/api/DogList/50'
-    return this.http.post<listeddog>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
+    return this.http.post<string>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
   }
   GetListedDogByID(id:any): Promise<[]> {
     return this.http.get<[]>(this.BaseURL + "ListedDog/" + id).toPromise();
   }
-  AddLikes(newLikes: likes ) : Promise<likes>
+  AddLikes(newLikes: likes ) : Promise<any>
   {
-    return this.http.post<likes>(this.baseURLL, newLikes).toPromise() 
+    return this.http.post<likes>(this.baseURLL, newLikes).toPromise(); 
   }
   GetAllListedDogs(): Promise<listeddog>
   {
     return this.http.get<listeddog>(this.baseURLLD).toPromise();
+  }
+  GetAllLisedDogsByUsername(username:string): void//Promise<listeddog[]>
+  {
+    //return this.http.get<listeddog[]>(this.BaseURL+ "ListedDog/", username).toPromise();
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();

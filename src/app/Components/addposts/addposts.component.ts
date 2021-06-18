@@ -35,11 +35,9 @@ export class AddpostsComponent implements OnInit {
     this.auth.getUser().subscribe(result => {
       if (result)
         if (result.displayName) {
-          alert(result.displayName + " Calling from within Auth")
           this.newPost.userCreator = result.displayName
         }
         else if (result.email) {
-          alert(result.email)
           this.newPost.userCreator = result.email
         }
     });
@@ -51,10 +49,9 @@ export class AddpostsComponent implements OnInit {
       } )
   }
   onSubmit(): void {
-  
-    alert(this.newPost.userCreator + " Calling Second");
+    this.service.AddPost(this.newPost).then( result =>
+      this.router.navigate(['Post'], { queryParams: {forumId: this.forumID}})
+    );
 
-    this.service.AddPost(this.newPost);
-    this.router.navigate(['Post'], { queryParams: {forumId: this.forumID}});
   }
 }

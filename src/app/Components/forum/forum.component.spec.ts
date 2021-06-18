@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DNHService } from '../../dnh.service';
 import { PetFinderService } from '../../pet-finder.service';
-
 import { ForumComponent } from './forum.component';
 
 describe('ForumComponent', () => {
