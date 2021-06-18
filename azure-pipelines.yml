@@ -57,5 +57,4 @@ steps:
     azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
     appType: 'webAppLinux'
     WebAppName: 'DogNHomeClient'
-    packageForLinux: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    RuntimeStack: 'NODE|12-lts'
+    package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
