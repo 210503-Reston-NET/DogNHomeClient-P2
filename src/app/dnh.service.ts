@@ -66,7 +66,7 @@ export class DNHService {
   GetListedDogByID(id:any): Promise<[]> {
     return this.http.get<[]>(this.BaseURL + "ListedDog/" + id).toPromise();
   }
-  AddLikes(newLikes: likes ) : Promise<likes>
+  AddLikes(newLikes: likes ) : Promise<any>
   {
     return this.http.post<likes>(this.baseURLL, newLikes).toPromise(); 
   }

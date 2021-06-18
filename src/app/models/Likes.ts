@@ -1,4 +1,4 @@
 export interface likes{
-    userid: string;
-    dogid:number
+    userName: string,
+    dogID:number
 }

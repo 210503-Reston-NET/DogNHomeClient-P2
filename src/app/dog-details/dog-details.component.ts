@@ -17,8 +17,8 @@ export class DogDetailsComponent implements OnInit {
 
 
   likeList: likes = {
-    userid:'Cesar_19',
-    dogid: 0,
+    userName:'Cesar_19',
+    dogID: 0,
   }
   dog: any;
   loc: any;
@@ -55,7 +55,7 @@ export class DogDetailsComponent implements OnInit {
       this.dogPhotos = this.dog.animal.photos
       console.log(this.dogPhotos)
       this.getLocation(this.dog.animal.organization_id)
-      this.likeList.dogid = id
+      this.likeList.dogID = id
     })
   }
 
@@ -74,11 +74,11 @@ export class DogDetailsComponent implements OnInit {
     this.auth.getUser().subscribe((result:any) => {
       if (result)
         if (result.displayName) {
-          this.likeList.userid = result.uid 
+          this.likeList.userName = result.uid 
         }
         else if (result.email) {
           alert(result.email)
-          this.likeList.userid = result.email
+          this.likeList.userName = result.email
         }
         
   });
@@ -89,10 +89,12 @@ export class DogDetailsComponent implements OnInit {
     heart?.addEventListener('click', function() {
       heart.classList.toggle('red');
       console.log("IT Changes to red")
+      
     });
+    this.dnhservice.AddLikes(this.likeList).then((result:any) =>
+      {}
+    );
     console.log("Pre adding list", this.likeList)
-    this.dnhservice.AddLikes(this.likeList).then((result:any) => {
-      console.log("ADDING TO THE FAVES LIST", result)
-    })
+    
   };
 }
