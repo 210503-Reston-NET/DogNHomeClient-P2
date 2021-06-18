@@ -6,6 +6,7 @@ import {doglist} from '../app/survey/DogList';
 import { listeddog } from './survey/ListedDog';
 import { Comments } from './models/Comments';
 import { likes } from './models/Likes';
+import { User } from './models/User';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,10 @@ export class DNHService {
 
   BaseURL: string = 'https://dognhome.azurewebsites.net/api/';
   url: string = '';
+  usr: User = 
+  {
+   UserID: "default"
+  }
 
 
   // the backend takes in a string for the user id
@@ -25,11 +30,13 @@ export class DNHService {
   // else create new user with id
   // create faviorte list for new user
 
-  userSignIn(id: any){
+  userSignIn(uid: string) {
+    console.log(uid);
+    console.log(this.BaseURL + "User")
+    this.usr.UserID = uid;
     this.http.post(
-      this.BaseURL+"User/",
-      id
-    )
+      this.BaseURL + "User", this.usr
+    ).toPromise().catch(result => console.log("error", result));
   }
 
   GetForums(): Promise<Forum[]> {
@@ -50,7 +57,7 @@ export class DNHService {
     return this.http.post<Post>(this.url, postToAdd).toPromise();
   }
   GetPost(postID: number): Promise<Post> {
-    this.url = this.BaseURL + "Comment/" + postID;
+    this.url = this.BaseURL + "Post/" + postID + "/specific";
     return this.http.get<Post>(this.url).toPromise();
   }
   //DogList

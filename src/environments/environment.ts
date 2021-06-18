@@ -1,4 +1,3 @@
-
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -12,11 +11,11 @@ firebase: {
     projectId: "dognhome-2eaaa.appspot.com",
     storageBucket: "dognhome-2eaaa.appspot.com",
     messagingSenderId: "422565600673",
-    appId: "1:422565600673:web:ce414322bc7bccc8a23fe0",
+    appId: "1:422565600673:web:ce414322bc7bccc8a23fe0"
   },
   petFinderCeds: {
     grant_type: "client_credentials",
-    client_id:  "Ga5igrLS8Gpqbk64FlpE2MfTnFoHrlGuksGhYmKAkcaKQwdOHm",
+    client_id: "Ga5igrLS8Gpqbk64FlpE2MfTnFoHrlGuksGhYmKAkcaKQwdOHm",
     client_secret: "3qCUyUZdslniwaCVyhuFaCk2Urchxrt2YoTpcOU2"
   }
 };
