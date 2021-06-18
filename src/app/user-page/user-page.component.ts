@@ -61,6 +61,7 @@ export class UserPageComponent implements OnInit {
   getUserIdForAlertCheck(){
     this.auth.getUser().subscribe((user: any) =>{
       this.checkAlerts(user.uid)
+      this.dnhService.GetAllLisedDogsByUsername(user.uid)
     })
   }
 
@@ -99,6 +100,7 @@ export class UserPageComponent implements OnInit {
         this.getUserIdForAlertCheck()
       })
     }
+    
   }
 
   signOut(){

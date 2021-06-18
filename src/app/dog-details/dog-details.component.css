@@ -128,3 +128,11 @@
 .conatiner-map{
     width: 50%;
 }
+#heart {
+    color: black;  
+    font-size: 50px;
+  }
+  
+  #heart.red {
+    color: red;
+  }
