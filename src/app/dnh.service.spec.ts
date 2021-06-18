@@ -17,8 +17,8 @@ describe('DNHService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe("ForumServices", () =>
-    {
-      it('should get all forums', )
-    })
+  // describe("ForumServices", () =>
+  //   {
+  //     it('should get all forums', )
+  //   })
 });
