@@ -51,7 +51,15 @@ steps:
     replaceExistingArchive: true
     verbose: true
 
-  
+- task: AzureRmWebAppDeployment@4
+  displayName: Connet App Services
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
+    appType: 'webApp'
+    WebAppName: 'DogNHome'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    StartupCommand: 'pm2 serve /home/site/wwwroot/dist/Ang-GACD-UI --no-daemon --spa'
 - task: AzureWebApp@1
   inputs:
         azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
