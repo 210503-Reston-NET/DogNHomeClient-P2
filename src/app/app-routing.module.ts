@@ -14,6 +14,7 @@ import { GetpostsComponent } from './Components/getposts/getposts.component';
 import { AddpostsComponent } from './Components/addposts/addposts.component';
 import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
 import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
+import { UserDoListsComponent } from './user-do-lists/user-do-lists.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: "Survey", 
     component: SurveyComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: "UserLists",
+    component: UserDoListsComponent,
     canActivate: [LoggedInGuard]
   },
   {path: "Login", component: LoginComponent},

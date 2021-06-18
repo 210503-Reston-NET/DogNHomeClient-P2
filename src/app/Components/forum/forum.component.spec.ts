@@ -18,6 +18,7 @@ describe('ForumComponent', () => {
     providers: [DNHService,RouterModule, PetFinderService ]
     })
     .compileComponents();
+     
   });
 
   beforeEach(() => {

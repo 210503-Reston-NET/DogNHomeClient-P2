@@ -5,6 +5,7 @@ import { DNHService } from '../dnh.service';
 import { PetFinderService } from '../pet-finder.service';
 import { Location } from '@angular/common'
 
+
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -49,11 +50,16 @@ export class UserPageComponent implements OnInit {
   }
 
   seenNewDogs(xalert: any){
+    console.log("setting new dog")
     this.petFinder.GetDogsFiltered(xalert.alertValue).subscribe((res: any) => {
+      console.log("old", xalert)
+      console.log("new", res)
+      xalert.dogID = res.animals[0].id.toString()
+      console.log(xalert)
 
-      xalert.dogID = res.animals[0].id
-
-      this.dnhService.seenAlertedDogs(xalert)
+      this.dnhService.seenAlertedDogs(xalert).subscribe(res => {
+        console.log("this is the response for updating alert", res)
+      })
     })
 
   }

@@ -1,4 +1,3 @@
-
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -7,7 +6,6 @@ import { DNHService } from '../../dnh.service';
 import { AddForumComponent } from './add-forum.component';
 import { FormsModule } from '@angular/forms';
 import { Forum } from '../../models/Forum';
-
 
 describe('AddForumComponent', () => {
   let component: AddForumComponent;
@@ -52,4 +50,8 @@ describe('AddForumComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // it('Should add forums to the list', () => {
+  //     return service.AddForum(mockData).then
+  //     ((results) => {expect(service.GetForums() == null)});
+  // })
 });
