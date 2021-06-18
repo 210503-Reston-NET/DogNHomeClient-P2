@@ -51,11 +51,11 @@ export class AddcommentsComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.newComment.postID = params.postID;
-        alert(params.postID);
+
         this.service.GetPost(params.postID).then(result =>
           this.currentPost.topic = result.topic
         );
-        alert(this.currentPost.topic)
+
       });
 
   }

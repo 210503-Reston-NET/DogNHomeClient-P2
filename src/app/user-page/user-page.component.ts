@@ -5,6 +5,7 @@ import { DNHService } from '../dnh.service';
 import { PetFinderService } from '../pet-finder.service';
 import { Location } from '@angular/common'
 
+
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',

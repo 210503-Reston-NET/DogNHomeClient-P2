@@ -26,6 +26,7 @@ export class DNHService {
   // create faviorte list for new user
 
   userSignIn(id: any){
+    console.log(id)
     this.http.post(
       this.BaseURL+"User/",
       id
@@ -76,6 +77,12 @@ export class DNHService {
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
+  }
+
+  GetAllDogListsForUser(id: any){
+    return this.http.get(
+      this.baseURLDL+id
+    )
   }
   setAlert(mcguffin: any){
     return this.http.post(
