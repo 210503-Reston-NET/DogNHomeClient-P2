@@ -121,9 +121,6 @@ ngOnInit(): void {
   GoToHome():void
   {
     this.AddTheSurveyList(); 
-    
-    
-    
   }
  
 
