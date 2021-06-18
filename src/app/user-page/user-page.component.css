@@ -18,3 +18,16 @@
     /* font-size: 7rem; */
     color: #95e0d9;
 }
+.dog-card-btn{
+    color: white;
+}
+.dog-img{
+    width: 100%;
+    /* height: 100%; */
+    max-height: 30rem;
+    /* background-size: cover; */
+    object-fit: cover;
+}
+.example-card{
+    /* max-height: 20rem; */
+}

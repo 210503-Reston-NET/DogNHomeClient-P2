@@ -23,6 +23,23 @@ export class GetpostsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // this.route.queryParams.subscribe(
+    //   params => {
+    //     this.service.GetPosts(params.forumId).then(
+    //       result => {
+    //         this.posts = result;
+    //       }
+    //     );
+    //     this.forumID = params.forumId;
+    //   }
+    // )
+
+    this.getToken()
+    this.tempCodeHolder()
+
+  }
+
+  tempCodeHolder(){
     this.route.queryParams.subscribe(
       params => {
         this.service.GetPosts(params.forumId).then(
@@ -33,10 +50,8 @@ export class GetpostsComponent implements OnInit {
         this.forumID = params.forumId;
       }
     )
-
-    this.getToken()
-
   }
+
   getToken() {
     this.petFinder.GetToken().subscribe(token => {
       this.petFinder.SetToken(token)
@@ -62,7 +77,7 @@ export class GetpostsComponent implements OnInit {
     this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
   }
 
-  GoToComments(postID: number): void {
-    this.router.navigate(['Comment'], { queryParams: { postID: postID } });
+  GoToComments(postID: number, postTopic: string): void {
+    this.router.navigate(['Comment'], { queryParams: { postID: postID, postTopic: postTopic } });
   }
 }

@@ -16,6 +16,7 @@ export class GetcommentsComponent implements OnInit {
   dogs: any;
   comments: Comments[] = [];
   postID: number = 0;
+  postTopic: string = "Not Found";
 
   constructor(
     private service: DNHService,
@@ -34,6 +35,7 @@ export class GetcommentsComponent implements OnInit {
           }
         ).catch(result => alert("Failed to getAllComments" + result));
         this.postID = params.postID;
+        this.postTopic = params.postTopic;
       }
     )
 
@@ -57,7 +59,7 @@ export class GetcommentsComponent implements OnInit {
   }
 
   AddComments() {
-    this.router.navigate(['addComment'], { queryParams: { postID: this.postID } });
+    this.router.navigate(['addComment'], { queryParams: { postID: this.postID, postTopic: this.postTopic} });
   }
 
 }

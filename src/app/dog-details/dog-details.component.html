@@ -1,6 +1,5 @@
 
-<!-- <app-navbar></app-navbar> -->
-<!-- <app-map></app-map> -->
+
 <div *ngIf="dog" class="background">
     <div class="container-fluid">
         <div class="row justify-content-around">
@@ -9,7 +8,7 @@
         </div>
     </div>
 
-    <div class=" ">
+    <div class="container ">
         <div class="">
             <div class="mainCon ">
 
@@ -29,11 +28,29 @@
                     <hr>
                     <h3>Breed: {{dog.animal.breeds.primary}}, <span *ngIf="dog.animal.breeds.secondary">{{dog.animal.breeds.secondary}}</span></h3>
                     <hr>
+                    <h3>Size: {{dog.animal.size}}</h3>
+                    <hr>
+                    <h3>Enjoys a home with: 
+                        <span *ngIf="dog.animal.environment.dogs"> other dogs</span>
+                        <span *ngIf="dog.animal.environment.dogs && dog.animal.environment.cats">,</span>
+                        <span *ngIf="dog.animal.environment.cats"> cats</span>
+                        <span *ngIf="dog.animal.environment.dogs && dog.animal.environment.cats || 
+                        dog.animal.environment.dogs && dog.animal.environment.children">,</span>
+                        <span *ngIf="dog.animal.environment.children"> children </span>
+                    
+                    </h3>
+                    <hr>
+                    <h3>Has been: 
+                        <span *ngIf="dog.animal.attributes.house_trained"> House trained,</span>
+                        <span *ngIf="dog.animal.attributes.shots_current"> Given all their necessary shots,</span>
+                        <span *ngIf="dog.animal.attributes.spayed_neutered"> Spayed and Neutered </span>
+                    </h3>
+                    <hr>
                     <h3>Tags: </h3>
                     <p *ngFor="let tag of dog.animal.tags">{{tag}}</p>
                     <hr>
                     <h3>Description: {{dog.animal.description}}</h3>
-
+                    <i class="fa fa-heart" id="heart" (click)= 'function()' ></i>
                 </div>
 
                 <div class="loc-div" *ngIf="loc">

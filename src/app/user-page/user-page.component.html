@@ -48,7 +48,34 @@
         </mat-card-actions>
     </mat-card> -->
 <mat-grid-list cols="2" rowHeight="1:2">
-    <mat-grid-tile *ngFor="let dog of dogsArr.animals">
+    <mat-grid-list cols="2" rowHeight="1:2">
+        <mat-grid-tile *ngFor="let dog of dogsArr.animals">
+            <!-- <ul >
+                <li>
+                    <p>Name: {{dog.name}}</p>
+            
+                    <img *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+                    <a routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                </li>
+            </ul> -->
+            <mat-card class="example-card" >
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>Name: {{dog.name}}</mat-card-title>
+                    <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-header>
+                <img class="dog-img" *ngIf="dog.primary_photo_cropped" src="{{dog.primary_photo_cropped.small}}" alt="">
+                <mat-card-content>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">
+                        <a class="dog-card-btn" class="dog-card-btn" routerLink="/DogDetails/{{dog.id}}">Show Dog Details</a>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <mat-grid-tile *ngFor="let dog of dogsArr.animals">
         <ul >
             <li>
                 <p>Name: {{dog.name}}</p>
@@ -58,5 +85,5 @@
             </li>
         </ul>
     </mat-grid-tile>
-</mat-grid-list>
-</div>
+</mat-grid-list> -->
+<!-- </div> -->

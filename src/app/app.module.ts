@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
@@ -40,6 +40,7 @@ import { AddpostsComponent } from './Components/addposts/addposts.component';
 import { MapComponent } from './Components/map/map.component';
 import { GetcommentsComponent } from './Components/getcomments/getcomments.component';
 import { AddcommentsComponent } from './Components/addcomments/addcomments.component';
+import { UserDoListsComponent } from './user-do-lists/user-do-lists.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AddcommentsComponent } from './Components/addcomments/addcomments.compo
     MapComponent,
     GetcommentsComponent,
     AddcommentsComponent,
+    UserDoListsComponent,
     
   ],
   imports: [
