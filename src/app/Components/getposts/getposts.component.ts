@@ -62,7 +62,7 @@ export class GetpostsComponent implements OnInit {
     this.router.navigate(['addPost'], { queryParams: { forumID: this.forumID } });
   }
 
-  GoToComments(postID: number): void {
-    this.router.navigate(['Comment'], { queryParams: { postID: postID } });
+  GoToComments(postID: number, postTopic: string): void {
+    this.router.navigate(['Comment'], { queryParams: { postID: postID, postTopic: postTopic } });
   }
 }

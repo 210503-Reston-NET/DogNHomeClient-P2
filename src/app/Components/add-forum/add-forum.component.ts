@@ -27,7 +27,6 @@ export class AddForumComponent implements OnInit {
   }
 
   onSubmit(): void {
-    alert(this.newForum.topic + " " + this.newForum.description)
     this.service.AddForum(this.newForum).then(result =>
       this.router.navigate(['Forum'])
     ).catch(err => alert(err));

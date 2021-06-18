@@ -11,7 +11,7 @@
         <tr *ngIf="i%2 == 1" style="    background-color: #f8f8f1;">
           <td>
             <div>
-              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID)"> {{post.topic}}</i>
+              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID, post.topic)"> {{post.topic}}</i>
               <span> - <p>{{post.userCreator}}</p></span>
             </div>
           </td>
@@ -19,14 +19,13 @@
         <tr *ngIf="i%2 == 0">
           <td>
             <div>
-              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID)"> {{post.topic}}</i>
+              <i class="fa fa-newspaper-o" aria-hidden="true" (click)="GoToComments(post.postID, post.topic)"> {{post.topic}}</i>
               <span> - <p>{{post.userCreator}}</p></span>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-
   </div>
   <ng-template #noPosts>
     <div class="col-8">
@@ -34,13 +33,14 @@
     </div>
   </ng-template>
 
-  <div class="col-4">
-    <mat-card>
+  <div class="col-4" *ngIf="dogs">
+    <mat-card style="overflow: hidden">
       <mat-card-header>
         <mat-card-title>Adopt {{dogs.animals[0].name}}!</mat-card-title>
         {{dogs.animals[0].videos.embed}}
       </mat-card-header>
       <mat-card-content class="justify-content-center">
+        <img mat-card-image src="{{dogs.animals[0].primary_photo_cropped.small}}"  *ngIf="dogs.animals[0].primary_photo_cropped.small" style="margin: 20px 0px;"/>
         <h3>About Me</h3>
         <p *ngIf="dogs.animals[0].description else noDescription">
           {{dogs.animals[0].description}}
