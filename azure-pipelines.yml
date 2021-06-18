@@ -58,7 +58,7 @@ steps:
     azureSubscription: 'Azure subscription 1(c9d4b655-c981-4696-93d6-bc06f9189051)'
     appType: 'webApp'
     WebAppName: 'DogNHomeClient'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     StartupCommand: 'pm2 serve /home/site/wwwroot/dist/DogNHomeClient --no-daemon --spa'
 - task: AzureWebApp@1
   inputs:
