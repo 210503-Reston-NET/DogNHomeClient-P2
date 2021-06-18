@@ -37,9 +37,9 @@ steps:
   #inputs:
     #script: "ng test --browsers=ChromeHeadless --code-coverage --watch=false"
 
-- script: |
-    export CHROME_BIN=$(which google-chrome)
-    npx ng test --browsers ChromeHeadlessNoSandbox --watch=false --karmaConfig karma.conf.js --code-coverage 
+#- script: |
+    #export CHROME_BIN=$(which google-chrome)
+    #npx ng test --browsers ChromeHeadlessNoSandbox --watch=false --karmaConfig karma.conf.js --code-coverage 
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
