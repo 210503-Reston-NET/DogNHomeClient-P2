@@ -7,20 +7,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 
-<<<<<<< HEAD
 describe('GetpostsComponent', () => {
   let component: GetpostsComponent;
   let fixture: ComponentFixture<GetpostsComponent>;
-=======
-
-describe('GetpostsComponent', () => {
-  let component: GetpostsComponent;
-  let fixture: ComponentFixture<GetpostsComponent>;
-  //private route: ActivatedRoute,
-    //private service: DNHService,
-    //private router: Router,
-    //private petFinder: PetFinderService
->>>>>>> ff6ddf77de36e26d7a237f03463234cf102794cf
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
