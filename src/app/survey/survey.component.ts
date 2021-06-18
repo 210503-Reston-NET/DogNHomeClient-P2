@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 import { loadTranslations } from '@angular/localize';
 
 
+
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -144,7 +145,8 @@ ngOnInit(): void {
         });
         this.dogtolist.dogs = this.doggies
           this.dnhService.AddListedDog(this.dogtolist).then(
-            (result:any) => console.log("adding to the DB", result)        
+            result => 
+            this.router.navigate(["List"], { queryParams: { listID: result}})        
           );
         this.dogtolist.id = ids 
       });
@@ -156,6 +158,7 @@ ngOnInit(): void {
   
     this.dnhService.AddDogList(this.surveyList).then( result =>
         {
+          
           console.log(result) 
           console.log(result.listID) 
           this.dogtolist.id = result.listID
@@ -163,7 +166,8 @@ ngOnInit(): void {
           this.filterDogs(result.listID)  
           this.myInt = this.dogtolist.id
           console.log("MY INT VALUE", this.myInt)
-          this.router.navigate(["List"], { queryParams: { listID: this.myInt }})
+
+          
         }
     ).catch(err => console.log(err));
     }
