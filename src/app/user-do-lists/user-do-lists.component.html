@@ -1,0 +1,14 @@
+<div class="container" *ngIf="listsArr">
+    <div class="row" *ngFor="let list of listsArr">
+        <h1>{{list.title}}</h1>
+        <button mat-raised-button color="primary" (click)="viewList(list.listID)">View List</button>
+    </div>
+</div>
+
+<ng-template *ngIf="!listsArr">
+    <div class="row">
+        <div class="col">
+            <h1>No list yet, go make a list!</h1>
+        </div>
+    </div>
+</ng-template>

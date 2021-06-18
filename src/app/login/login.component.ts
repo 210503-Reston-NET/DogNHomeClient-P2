@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   printUser(event: any) {
-
-    this.dnh.userSignIn(event.uid)
+    this.dnh.userSignIn(event.uid.toString())
     this.router.navigate(['']);
   }
 

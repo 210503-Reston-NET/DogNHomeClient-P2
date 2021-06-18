@@ -33,21 +33,44 @@ export class DogListComponent implements OnInit {
   getDogsById(doggos1:any) {
     console.log("MY TESTING LIST INSIDE DOGGOS1", doggos1)
     doggos1.forEach((ints:any) => {
-      this.petFinder.GetDog(ints).subscribe(data =>{ console.log(data)
-        this.dogIdArr = data;
+      
+      this.petFinder.GetDog(ints).subscribe(data =>{ //console.log(data)
+        this.dogIdArr.push(data);
     });
       
     });
-   // console.log("MY TESTING LIST", this.dogIdArr)
+    console.log("MY TESTING LIST BEFORE LEAVING GET DOGSBYID", this.dogIdArr)
   }
 
   getToken(){
-    this.petFinder.GetToken().subscribe(token => {
-      this.petFinder.SetToken(token)
-      console.log("token set")
-      //this.getDogs()
+   
+    if(this.petFinder.token){
+      this.route.queryParams.subscribe(
+        params => {
+          console.log("IT GOT PASSED BY SURVEY", params.listID)
+          this.getTheSurveyDogs(parseInt(params.listID))
+  
+        }
+          )
+          console.log("MY TESTING LIST AFTER LEAVING GET DOGSBYID", this.dogIdArr)
+  
+    }else if(!this.petFinder.token){
+      this.petFinder.GetToken().subscribe(token => {
+        this.petFinder.SetToken(token)
+        this.route.queryParams.subscribe(
+          params => {
+            console.log("IT GOT PASSED BY SURVEY", params.listID)
+            this.getTheSurveyDogs(parseInt(params.listID))
+    
+          }
+            )
+            console.log("MY TESTING LIST AFTER LEAVING GET DOGSBYID", this.dogIdArr)
+    
+  
     })
   }
+
+}
 
   getDogs(){
     this.petFinder.GetDogs().subscribe(dogs => {
@@ -59,18 +82,18 @@ export class DogListComponent implements OnInit {
   ngOnInit(): void {
 
     this.getToken()
-    this.route.queryParams.subscribe(
+    /*this.route.queryParams.subscribe(
       params => {
         console.log("IT GOT PASSED BY SURVEY", params.listID)
-        this.getTheSurveyDogs(parseInt(params.listID)-1)
+        this.getTheSurveyDogs(parseInt(params.listID))
 
       }
         )
-        console.log("MY TESTING LIST", this.dogIdArr)
+        console.log("MY TESTING LIST AFTER LEAVING GET DOGSBYID", this.dogIdArr)
+      */
 
 
-
-      }
+  }
 
   getTheSurveyDogs(id:number):void
   {

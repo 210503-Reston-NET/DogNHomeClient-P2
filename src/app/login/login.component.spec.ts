@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DNHService } from '../dnh.service';
-import {AuthProvider} from 'ngx-auth-firebaseui';
+// import {AuthProvider} from 'ngx-auth-firebaseui';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
