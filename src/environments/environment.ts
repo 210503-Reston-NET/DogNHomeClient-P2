@@ -16,7 +16,11 @@ firebase: {
   },
   petFinderCeds: {
     grant_type: "client_credentials",
+<<<<<<< HEAD
     client_id: "Ga5igrLS8Gpqbk64FlpE2MfTnFoHrlGuksGhYmKAkcaKQwdOHm",
+=======
+    client_id:  "Ga5igrLS8Gpqbk64FlpE2MfTnFoHrlGuksGhYmKAkcaKQwdOHm",
+>>>>>>> ff6ddf77de36e26d7a237f03463234cf102794cf
     client_secret: "3qCUyUZdslniwaCVyhuFaCk2Urchxrt2YoTpcOU2"
   }
 };

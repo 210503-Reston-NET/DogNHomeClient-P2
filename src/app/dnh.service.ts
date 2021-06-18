@@ -65,21 +65,25 @@ export class DNHService {
   {
     return this.http.post<doglist>(this.baseURLDL, newDogList).toPromise() 
   }
-  AddListedDog(newListedDog: listeddog) : Promise<listeddog>
+  AddListedDog(newListedDog: listeddog) : Promise<string>
   {
     console.log("ENTER")              //'https://dognhome.azurewebsites.net/api/DogList/50'
-    return this.http.post<listeddog>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
+    return this.http.post<string>(this.BaseURL + "DogList/" + newListedDog.id, newListedDog).toPromise() 
   }
   GetListedDogByID(id:any): Promise<[]> {
     return this.http.get<[]>(this.BaseURL + "ListedDog/" + id).toPromise();
   }
-  AddLikes(newLikes: likes ) : Promise<likes>
+  AddLikes(newLikes: likes ) : Promise<any>
   {
-    return this.http.post<likes>(this.baseURLL, newLikes).toPromise() 
+    return this.http.post<likes>(this.baseURLL, newLikes).toPromise(); 
   }
   GetAllListedDogs(): Promise<listeddog>
   {
     return this.http.get<listeddog>(this.baseURLLD).toPromise();
+  }
+  GetAllLisedDogsByUsername(username:string): void//Promise<listeddog[]>
+  {
+    //return this.http.get<listeddog[]>(this.BaseURL+ "ListedDog/", username).toPromise();
   }
   GetAllDogList(): Promise<doglist> {
     return this.http.get<doglist>(this.baseURLLD).toPromise();
